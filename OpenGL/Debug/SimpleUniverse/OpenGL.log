@@ -1,0 +1,19 @@
+﻿Build started 13-Sep-14 5:16:49 PM.
+     1>Project "C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\OpenGL\OpenGL.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Andrew Servania\Documents\visual studio 2010\Projects\OpenGL\glut-3.7.6-bin" /I"C:\Users\Andrew Servania\Documents\Visual Studio 2010\Projects\OpenGL\freeglut\include" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\SimpleUniverse\\" /Fd"Debug\SimpleUniverse\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\Debug\SimpleUniverse.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\freeglut\bin" /LIBPATH:"C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\freeglut\lib" /LIBPATH:"C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\glut-3.7.6-bin" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\Debug\SimpleUniverse.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\Debug\SimpleUniverse.lib" /MACHINE:X86 Debug\SimpleUniverse\OpenGL.res
+         Debug\SimpleUniverse\imageloader.obj
+         Debug\SimpleUniverse\KeyBoardControl.obj
+         Debug\SimpleUniverse\main.obj
+         Debug\SimpleUniverse\Planets.obj
+         Debug\SimpleUniverse\Something.obj
+         Debug\SimpleUniverse\UniverseCameraParameters.obj
+         OpenGL.vcxproj -> C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\Debug\SimpleUniverse.exe
+     1>Done Building Project "C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\OpenGL\OpenGL.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.21
