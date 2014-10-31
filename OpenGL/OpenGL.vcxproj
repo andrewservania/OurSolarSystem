@@ -69,7 +69,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Andrew\Documents\Visual Studio 2010\Projects\OpenGL\freeglut\include\GL;C:\Users\Andrew\Documents\Visual Studio 2010\Projects\OpenGL\freeglut;C:\Users\Andrew\Documents\Visual Studio 2010\Projects\OpenGL\glut-3.7.6-bin;$(IncludePath)</IncludePath>
+    <IncludePath>$(IncludePath)</IncludePath>
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -78,6 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -89,14 +90,20 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Andrew Servania\Documents\visual studio 2010\Projects\OpenGL\glut-3.7.6-bin;C:\Users\Andrew Servania\Documents\Visual Studio 2010\Projects\OpenGL\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\freeglut\bin;C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\freeglut\lib;C:\Users\Andrew\Documents\Visual Studio 2013\Projects\3D Universe\glut-3.7.6-bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL\freeglut\lib;$(SolutionDir)\OpenGL\glut-3.7.6-bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;freeglut.lib;glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y "$(ProjectDir)DLLs" "$(SolutionDir)Debug"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy freeGlut DLL to Debug folder when debugging</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -123,13 +130,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL\freeglut\lib;$(SolutionDir)\OpenGL\glut-3.7.6-bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /E /Y "$(ProjectDir)DLLs" "$(SolutionDir)Release"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy necessary DLLs to Release folder</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -153,16 +168,13 @@
     <ClCompile Include="KeyBoardControl.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Planets.cpp" />
-    <ClCompile Include="Something.cpp" />
     <ClCompile Include="UniverseCameraParameters.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\glut-3.7.6-bin\glut.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="KeyBoardControl.h" />
     <ClInclude Include="Planets.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="Something.h" />
     <ClInclude Include="UniverseCameraParameters.h" />
   </ItemGroup>
   <ItemGroup>

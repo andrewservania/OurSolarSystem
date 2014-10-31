@@ -4,9 +4,13 @@
 #include <stdio.h>
 #include "Planets.h"
 
-
 KeyBoardControl::KeyBoardControl()
 {
+
+}
+KeyBoardControl::KeyBoardControl(Planets* planets)
+{
+	mPlanets = planets;
 }
 
 KeyBoardControl::~KeyBoardControl()
@@ -49,7 +53,7 @@ void KeyBoardControl::ListenToKeys(unsigned char key, int x, int y)
 
 	case 'r': UniverseCameraParameters::resetView = true;				break; // reset camera view to default position
 
-	case 'm': Planets::showOrbitalLanes = !Planets::showOrbitalLanes;   break; // Draw Orbital Lanes
+	case 'm': mPlanets->showOrbitalLanes = !mPlanets->showOrbitalLanes;   break; // Draw Orbital Lanes
 
 	case 't': UniverseCameraParameters::lightPosX++; break;
 	case 'y': UniverseCameraParameters::lightPosY++; break;

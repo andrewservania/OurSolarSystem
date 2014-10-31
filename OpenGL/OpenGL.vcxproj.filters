@@ -21,9 +21,6 @@
     <ClCompile Include="Planets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Something.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="imageloader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -35,16 +32,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\glut-3.7.6-bin\glut.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Planets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Something.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imageloader.h">

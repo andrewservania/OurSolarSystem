@@ -1,4 +1,5 @@
 #pragma once 
+#include "glut.h"
 
 using namespace std;
 
@@ -7,31 +8,44 @@ using namespace std;
 		
 
 	public :
-	    static bool showOrbitalLanes;
+		bool showOrbitalLanes;
+		float colorValue2;
+		bool visibility2;
+		bool imageLoaded;
+		GLuint _textureIdPlanet; //The id of the texture
+		GLUquadric *quadPlanet;
 
-		static void drawOrbit(float Radius, int numPoints, bool visible, float customV);
 
-		static void CreateMercury(float solarSystemRotation);
+		//TODO:Are these variables used? I don't thinks so. Find out
+		GLuint _textureId; //The id of the texture
+		GLUquadric *quad;
 
-		static void CreateVenus(float solarSystemRotation);
+		Planets();
+		~Planets();
 
-		static void CreatePlanetEarth(float solarSystemRotation);
+		 void drawOrbit(float Radius, int numPoints, bool visible, float customV);
 
-		static void CreateMars(float solarSystemRotation);
+		 void CreateMercury(float solarSystemRotation);
 
-		static void CreateJupiter(float solarSystemRotation);
+		 void CreateVenus(float solarSystemRotation);
 
-		static void CreateSaturn(float solarSystemRotation);
+		 void CreatePlanetEarth(float solarSystemRotation);
 
-		static void CreateUranus(float solarSystemRotation);
+		 void CreateMars(float solarSystemRotation);
 
-		static void CreateNeptunus(float solarSystemRotation);
+		 void CreateJupiter(float solarSystemRotation);
 
-		static void CreatePluto(float solarSystemRotation);
+		 void CreateSaturn(float solarSystemRotation);
 
-		static void LoadPlanetImages(const char* fileName);
+		 void CreateUranus(float solarSystemRotation);
+
+		 void CreateNeptunus(float solarSystemRotation);
+
+		 void CreatePluto(float solarSystemRotation);
+
+		 void LoadPlanetImages(const char* fileName);
 	
-		static void createTexturedPlanet();
+		 void createTexturedPlanet();
 
 	
 	
