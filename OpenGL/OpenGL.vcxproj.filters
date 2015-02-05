@@ -13,21 +13,66 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Planets">
+      <UniqueIdentifier>{f28d36c6-869e-4d8f-be53-16c7343d4ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UserInput">
+      <UniqueIdentifier>{01f5092e-d86f-4e2a-8bc3-5320703280fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{008c3e74-8327-4b06-8cff-a8165a3b56d7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Planets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="imageloader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KeyBoardControl.cpp">
+    <ClCompile Include="Jupiter.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Mars.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Mercury.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Neptune.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Planet.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Earth.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Pluto.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Saturn.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Uranus.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Venus.cpp">
+      <Filter>Source Files\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Planets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UniverseCameraParameters.cpp">
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyBoardControl.cpp">
+      <Filter>Source Files\UserInput</Filter>
+    </ClCompile>
+    <ClCompile Include="UniverseBackground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,45 +92,46 @@
     <ClInclude Include="UniverseCameraParameters.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Planet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Earth.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mercury.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Venus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mars.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jupiter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Saturn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Uranus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Neptune.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pluto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UniverseBackground.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OpenGL.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="universe.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="universe2.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="universe3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="DSC_0254.JPG">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="DSC.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="universe4.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="universe5.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="universe6.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="universe7.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Earth.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="EarthUpsideDown.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

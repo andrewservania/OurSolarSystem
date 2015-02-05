@@ -1,17 +1,18 @@
 #pragma once 
 #include "glut.h"
+#include <string>
 
 using namespace std;
 
 	class Planets
 	{
-		
 
 	public :
 		bool showOrbitalLanes;
 		float colorValue2;
 		bool visibility2;
 		bool imageLoaded;
+
 		GLuint _textureIdPlanet; //The id of the texture
 		GLUquadric *quadPlanet;
 
@@ -19,6 +20,7 @@ using namespace std;
 		//TODO:Are these variables used? I don't thinks so. Find out
 		GLuint _textureId; //The id of the texture
 		GLUquadric *quad;
+		 string fileLocationOfPlanets;
 
 		Planets();
 		~Planets();
@@ -45,7 +47,7 @@ using namespace std;
 
 		 void LoadPlanetImages(const char* fileName);
 	
-		 void createTexturedPlanet();
+		 void createTexturedPlanet(string planetImageLocation,int radius, int slices, int stacks);
 
 	
 	

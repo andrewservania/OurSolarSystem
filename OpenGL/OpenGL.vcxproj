@@ -165,33 +165,44 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="imageloader.cpp" />
+    <ClCompile Include="Jupiter.cpp" />
     <ClCompile Include="KeyBoardControl.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mars.cpp" />
+    <ClCompile Include="Mercury.cpp" />
+    <ClCompile Include="Neptune.cpp" />
+    <ClCompile Include="Planet.cpp" />
+    <ClCompile Include="Earth.cpp" />
     <ClCompile Include="Planets.cpp" />
+    <ClCompile Include="Pluto.cpp" />
+    <ClCompile Include="Saturn.cpp" />
+    <ClCompile Include="Sun.cpp" />
+    <ClCompile Include="UniverseBackground.cpp" />
     <ClCompile Include="UniverseCameraParameters.cpp" />
+    <ClCompile Include="Uranus.cpp" />
+    <ClCompile Include="Venus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="imageloader.h" />
+    <ClInclude Include="Jupiter.h" />
     <ClInclude Include="KeyBoardControl.h" />
+    <ClInclude Include="Mars.h" />
+    <ClInclude Include="Mercury.h" />
+    <ClInclude Include="Neptune.h" />
+    <ClInclude Include="Planet.h" />
+    <ClInclude Include="Earth.h" />
     <ClInclude Include="Planets.h" />
+    <ClInclude Include="Pluto.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Saturn.h" />
+    <ClInclude Include="Sun.h" />
+    <ClInclude Include="UniverseBackground.h" />
     <ClInclude Include="UniverseCameraParameters.h" />
+    <ClInclude Include="Uranus.h" />
+    <ClInclude Include="Venus.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="OpenGL.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="DSC.bmp" />
-    <Image Include="DSC_0254.JPG" />
-    <Image Include="Earth.bmp" />
-    <Image Include="EarthUpsideDown.bmp" />
-    <Image Include="universe.bmp" />
-    <Image Include="universe2.bmp" />
-    <Image Include="universe3.bmp" />
-    <Image Include="universe4.bmp" />
-    <Image Include="universe5.bmp" />
-    <Image Include="universe6.bmp" />
-    <Image Include="universe7.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
