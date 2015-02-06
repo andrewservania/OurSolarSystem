@@ -164,6 +164,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Axes.cpp" />
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="Jupiter.cpp" />
     <ClCompile Include="KeyBoardControl.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="Venus.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Axes.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="Jupiter.h" />
     <ClInclude Include="KeyBoardControl.h" />

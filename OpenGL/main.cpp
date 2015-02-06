@@ -26,6 +26,8 @@
 #include "Sun.h"
 
 #include "UniverseBackground.h"
+#include "Axes.h"
+
 using namespace std;
 
 //Global variables:
@@ -60,7 +62,7 @@ unique_ptr<Neptune> mNeptune;
 unique_ptr<Pluto> mPluto;
 
 unique_ptr<UniverseBackground> mUniverseBackground;
-
+unique_ptr<Axes> mAxes;
 
 //GLuint loadTexture(Image* image) {
 //
@@ -184,8 +186,13 @@ void Display(void)
 
 	mPluto->Render();
 
-	
+	mAxes->RenderXAxis();
+	mAxes->RenderYAxis();
+	mAxes->RenderZAxis();
 
+	mAxes->RenderXAxisGrid();
+	mAxes->RenderYAxisGrid();
+	mAxes->RenderZAxisGrid();
 	//glLoadIdentity();
 
 	//solarSystemPlanets->CreateMercury(solarSystemRotation);
@@ -504,7 +511,7 @@ int main(int argc, char* argv[])
 	mPluto->SetSize(3);
 
 	mUniverseBackground = make_unique<UniverseBackground>();
- 
+	mAxes = make_unique<Axes>();
 	//mMercury = new Mercury();
 	//mVenus = new Venus();
 	//mEarth = new Earth();
