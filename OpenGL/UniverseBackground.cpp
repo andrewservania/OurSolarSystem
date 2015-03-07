@@ -8,18 +8,22 @@ UniverseBackground::UniverseBackground()
 	Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str());
 	mTextureId = LoadTexture(image);
 	 delete image;
-
-	//solarSystemPlanets = new Planets();
-
 }
-
 
 UniverseBackground::~UniverseBackground()
 {
 }
 
+
 bool UniverseBackground::Render()
 {
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, mTextureId);
+	gluQuadricTexture(mQuad, 1);
+	gluSphere(mQuad, 1000, 100, 100);
+
 	mIsUniverseRendering = true;
 	return mIsUniverseRendering;
 }
@@ -31,15 +35,12 @@ void UniverseBackground::RenderWireFrame()
 }
 
 void UniverseBackground::RenderUniverseBackground(){
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, mTextureId);
-	gluQuadricTexture(mQuad, 1);
-	gluSphere(mQuad, 1500, 100, 100);
+	
+
 }
 
-GLuint UniverseBackground::LoadTexture(Image* image) {
 
+GLuint UniverseBackground::LoadTexture(Image* image) {
 	GLuint textureId;
 	glGenTextures(1, &textureId);				//Make room for our texture
 	glBindTexture(GL_TEXTURE_2D, textureId);	//Tell OpenGL which texture to edit

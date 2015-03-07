@@ -16,10 +16,13 @@ class Planet
 protected:
 	bool mShowOrbitalLanes;
 	float mColorValue;
+
 	bool mVisibility;
 	bool mIsImageLoaded;
+
 	string mPlanetTextureDefaultFolder;
 	string mPlanetTextureFileName;
+
 	bool mRenderStatus;
 	float mSolarSystemRotation;
 
@@ -29,13 +32,12 @@ protected:
 	GLfloat mOrbitRadius;
 	int mNumberOfPoints;
 
-	int mRadius;
+	GLfloat mRadius;
 	int mSlices;
 	int mStacks;
 
-
-
 	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
+	int mUnknownRotationValue;
 
 	/* To return complete planet coordinates in one data-structure*/
 	struct PlanetCoordinates{
@@ -44,7 +46,6 @@ protected:
 		GLfloat zPosition;
 	} mPlanetCoordinates;
 
-	int mUnknownRotationValue;
 
 
 public:
@@ -54,23 +55,25 @@ public:
 	bool Render();
 	GLuint LoadPlanetTexture(Image* image);
 	void LoadPlanetImage(const char* fileName);
-	void CreateTexturedPlanet( int radius, int slices, int stacks);
+	void CreateTexturedPlanet(GLfloat radius, int slices, int stacks);
 	void DrawOrbit(GLfloat radius, int numPoints,bool visible, GLfloat customV);
 
 	//*Standard Planet getters*/
 	GLfloat GetX();
 	GLfloat GetY();
 	GLfloat GetZ();
+
 	PlanetCoordinates GetPosition();
-	int GetSize();
+	GLfloat GetSize();
 
 	/*Standard Planet setters*/
 	void SetX(GLfloat value);
 	void SetY(GLfloat value);
 	void SetZ(GLfloat value);
+
 	void SetPosition(GLfloat x, GLfloat y, GLfloat z );
 	void SetPosition(PlanetCoordinates planetCoordinates);
-	void SetSize(int radius);
+	void SetSize(GLfloat radius);
 
 };
 

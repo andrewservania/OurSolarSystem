@@ -12,7 +12,7 @@ Planet::Planet()
 	mPlanetTextureFileName = "";
 	mCustomValue = 0.0f;
 	mSolarSystemRotation = 0;
-
+	//glColor4f(0.0f, 0.0f, 0.0f, 0.0f);
 	
 }
 
@@ -47,9 +47,6 @@ void Planet::SetVisibility(bool visibility)
 {
 	mVisibility = visibility;
 }
-
-
-
 
 /*Standard Orbit drawing function for all planets*/
 void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat customV)
@@ -117,7 +114,7 @@ void Planet::LoadPlanetImage(const char* fileName)
 	}
 }
 
-void Planet::CreateTexturedPlanet( int radius, int slices, int stacks)
+void Planet::CreateTexturedPlanet(GLfloat radius, int slices, int stacks)
 {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glEnable(GL_TEXTURE_2D);
@@ -125,8 +122,6 @@ void Planet::CreateTexturedPlanet( int radius, int slices, int stacks)
 	gluQuadricTexture(mQuadPlanet, 1);
 	gluSphere(mQuadPlanet, radius, slices, stacks);
 }
-
-
 
 
 GLfloat Planet::GetX()
@@ -150,8 +145,6 @@ Planet::PlanetCoordinates Planet::GetPosition()
 }
 
 
-
-
 void Planet::SetX(GLfloat value)
 {
 	mPlanetCoordinates.xPosition = value;
@@ -170,6 +163,7 @@ void Planet::SetZ(GLfloat value)
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
 }
 
+
 void Planet::SetPosition(GLfloat x, GLfloat y, GLfloat z)
 {
 	mPlanetCoordinates.xPosition = x;
@@ -182,12 +176,13 @@ void Planet::SetPosition(PlanetCoordinates planetCoordinates)
 	mPlanetCoordinates = planetCoordinates;
 }
 
-int Planet::GetSize()
+
+GLfloat Planet::GetSize()
 {
 	return mRadius;
 }
 
-void Planet::SetSize(int radius)
+void Planet::SetSize(GLfloat radius)
 {
 	mRadius = radius;
 	mOrbitRadius = mRadius*4;

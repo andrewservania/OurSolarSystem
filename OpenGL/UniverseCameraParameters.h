@@ -5,6 +5,7 @@ public:
 	 float camA;
 	 float camB;
 	 float camC;
+
 	 float cameraViewAngle;
 	 bool universeLoaded;
 

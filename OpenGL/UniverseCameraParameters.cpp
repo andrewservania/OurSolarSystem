@@ -5,14 +5,18 @@
 
 UniverseCameraParameters::UniverseCameraParameters()
 {
-	  camA = 20;
-	  camB = -120;
-	  camC = -60;
+	 // camA = 20;
+	 // camB = -120;
+	 // camC = -60;
 
-	  cameraViewAngle = 10.0f;
+	 camA = 10;
+	 camB = 10;
+	 camC = -120;
+
+	  cameraViewAngle = 0.0f;
 	  universeLoaded = false;
 
-	  animate = true;
+	  animate = false;
 	  visibility = true;
 	  colorValue = 0.0f;
 	  light = true;

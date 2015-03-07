@@ -12,8 +12,6 @@ Mercury::Mercury()
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Mercury specific
 
 	//glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	
-
 	//glColor3f(0.0f, 1.0f, 0.0f); //green
 
 	mPlanetTextureFileName = "texture_mercury.bmp";

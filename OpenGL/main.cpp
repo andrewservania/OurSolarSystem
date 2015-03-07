@@ -28,7 +28,15 @@
 #include "UniverseBackground.h"
 #include "Axes.h"
 
+
 using namespace std;
+
+const int mScreenWidth  = 1366;
+const int mScreenHeight = 768;
+const int mColorDepth   = 32;
+const int mRefreshRate  = 60;
+
+
 
 //Global variables:
 float solarSystemRotation = 0;
@@ -42,11 +50,8 @@ Planets*solarSystemPlanets;
 KeyBoardControl*keyboardControl;
 string fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 
-
 float mCameraRearDistance = -2000;
 float mCameraFrontDistance = 2000;
-
-
 
 UniverseCameraParameters* mCamera;
 
@@ -63,6 +68,10 @@ unique_ptr<Pluto> mPluto;
 
 unique_ptr<UniverseBackground> mUniverseBackground;
 unique_ptr<Axes> mAxes;
+
+
+
+
 
 //GLuint loadTexture(Image* image) {
 //
@@ -83,47 +92,87 @@ unique_ptr<Axes> mAxes;
 //	return textureId; //Returns the id of the texture
 //}
 
-void ToggleWireVsUniverseCreation(bool createUniverse)
-{
+//void ToggleWireVsUniverseCreation(bool createUniverse)
+//{
+//
+//	if (createUniverse == true)
+//	{
+//
+//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+//		glEnable(GL_TEXTURE_2D);
+//		glBindTexture(GL_TEXTURE_2D, _textureId);
+//		gluQuadricTexture(quad, 1);
+//		gluSphere(quad, 300, 50, 50);
+//	}
+//	else
+//	{
+//		glColor3f(0.0f, 0.0f, 1.0f);
+//		glutWireSphere(280, 200, 256);
+//	}
+//
+//
+//}
 
-	if (createUniverse == true)
+
+
+string fontFilename = "...\\OpenGL\\Resources\\Fonts\\";
+string fontName = "FreeSerif.ttf";
+
+
+void drawText(string text,float x,float y,float z){
+	//glMatrixMode(GL_PROJECTION);
+	//glPushMatrix();
+	//glLoadIdentity();
+	//gluOrtho2D(0.0, mScreenWidth, 0.0, mScreenHeight);
+
+	//glMatrixMode(GL_MODELVIEW);
+	//glPushMatrix();
+	//glLoadIdentity();
+
+	glColor3f(0.0, 1.0, 0.0); // Green
+	
+	//glRasterPos3f(x, y, z);
+	glRasterPos3f(-mCamera->camA, mCamera->camB, mCamera->camC);
+	
+	//glRasterPos2f(x, y);
+	void * font = GLUT_BITMAP_9_BY_15;
+	for (string::iterator i = text.begin(); i != text.end(); ++i)
 	{
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, _textureId);
-		gluQuadricTexture(quad, 1);
-		gluSphere(quad, 300, 50, 50);
+		char c = *i;
+		glutBitmapCharacter(font, c);
 	}
-	else
-	{
-		glColor3f(0.0f, 0.0f, 1.0f);
-		glutWireSphere(280, 200, 256);
-	}
+	//glMatrixMode(GL_MODELVIEW);
+	//glPopMatrix();
 
-
+	//glMatrixMode(GL_PROJECTION);
+	//glPopMatrix();
 }
-
 
 
 //Display is called continuously. So this is your graphics loop.
 void Display(void)
 {
+	
 	//// The following line empties the buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glLoadIdentity();
 
-	gluLookAt(
-		0 + mCamera->camA, -1 + mCamera->camB, -1 + mCamera->camC,		//eye
-		0 + mCamera->camA, 2 + mCamera->camB, 0 + mCamera->camC,		//center
-		0, 1, 0);						// up vector THIS ONE STAYS LIKE ThIS! UNLESS YOU WANT TO WORK WITH HEIGHTS!
+	//gluLookAt(
+	//	0 + mCamera->camA, -1 + mCamera->camB, -1 + mCamera->camC,		//eye
+	//	0 + mCamera->camA, 2 + mCamera->camB, 0 + mCamera->camC,		//center
+	//	0, 1, 0);						// up vector THIS ONE STAYS LIKE ThIS! UNLESS YOU WANT TO WORK WITH HEIGHTS!
 
-	glRotatef(mCamera->cameraViewAngle + 200, 0.0, 0.0, 1.0);
+	gluLookAt( mCamera->camA,  mCamera->camB,   -mCamera->camC,		//eye
+		       mCamera->camA,  mCamera->camB,    mCamera->camC,		//center
+			   0,			   1,				0);
+
+	glRotatef(mCamera->cameraViewAngle, 0.0, 10.0, 0.0);
 	
 	//Show Universe background picture
 	//ToggleWireVsUniverseCreation(false);
 	glPushMatrix();
-	glLineWidth(2.0);						// Width of ALL Lines in the 3D enviroment
+	glLineWidth(2.0);						// Width of ALL Lines in the 3D environment
 	glPopMatrix();
 
 	//// Sphere experimentation
@@ -135,19 +184,25 @@ void Display(void)
 	////			   The sphere is subdivided around the Z axis into slices and along the Z axis into stacks.
 
 	////Rotate on the x axis
-	glRotatef(aaa, 1.0, 0.0, 0.0);
+	//glRotatef(aaa, 0.0, 0.0, 0.0);
 
 	////Rotate on the y axis VERY IMPORTANT (universe is not upside down due to this:)
-	glRotatef(180, 0.0, 1.0, 0.0);
+	/*OpenGL Research update: 
+	OpenGL renders everything upside down as a standard.
+	  Because OpenGL assumes Y coordinates going from bottom to top. 
+	  If your code assumes the opposite will display things upside down. 
+	  You can setup your scene accordingly in order handle this properly by using
+	  glLookAt().
+	  */
+
+
+
+
 
 	////emit light from the next sphere object
 	////GLfloat mat_emission[] = {0.3, 0.2, 0.2, 1.0};
 	////glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
 
-
-
-	
-	
 
 	//NOTE!! StackOverflow suggestion:
 	//I've just noticed the first line of your question - 
@@ -158,13 +213,10 @@ void Display(void)
 	//and making the data static means it will be shared with 
 	//all objects of this type. This may well not be what you want. 
 	//Making them const simply means that they can't modify any members, but can still access them
-	mUniverseBackground->RenderUniverseBackground();
 
+	//drawText("Hello World", 0, 0, 0);
 
-	//////The Sun//////////////////////////////////////////////////////////
-	//glColor3f(1.0f, 1.0f, 0.0f); //yellow
-	//glutSolidSphere(8, 20, 10);
-	///////////////////////////////////////////////////////////////////////
+	mUniverseBackground->Render();
 
 	mSun->Render();
 
@@ -184,29 +236,15 @@ void Display(void)
 
 	mNeptune->Render();
 
+	mAxes->RenderXAxisGrid();
+    mAxes->RenderYAxisGrid();
+	mAxes->RenderZAxisGrid();
+
 	mPluto->Render();
 
-	mAxes->RenderXAxis();
-	mAxes->RenderYAxis();
-	mAxes->RenderZAxis();
 
-	mAxes->RenderXAxisGrid();
-	mAxes->RenderYAxisGrid();
-	mAxes->RenderZAxisGrid();
+
 	//glLoadIdentity();
-
-	//solarSystemPlanets->CreateMercury(solarSystemRotation);
-	//solarSystemPlanets->CreateVenus(solarSystemRotation);
-	//solarSystemPlanets->CreatePlanetEarth(solarSystemRotation);
-	//solarSystemPlanets->CreateMars(solarSystemRotation);
-	//solarSystemPlanets->CreateJupiter(solarSystemRotation);
-	//solarSystemPlanets->CreateSaturn(solarSystemRotation);
-	//solarSystemPlanets->CreateUranus(solarSystemRotation);
-	//solarSystemPlanets->CreateNeptunus(solarSystemRotation);
-	//solarSystemPlanets->CreatePluto(solarSystemRotation);
-
-
-
 
 	glutSwapBuffers();
 
@@ -296,13 +334,13 @@ void mouseWheel(int button, int dir, int x, int y)
 	if (dir > 0)
 	{
 		// Rotate Up
-		mCamera->camB += 2.0f;					// Forward
+		mCamera->camC += 8.0f;					// Forward
 
 	}
 	else
 	{
 		// Rotate Down
-		mCamera->camB -= 2.0f;					// Back up
+		mCamera->camC -= 8.0f;					// Back up
 	}
 }
 
@@ -431,7 +469,10 @@ void IdleFunc(void)
 		}
 		//////////////////////////////////////////	
 
-		if (mCamera->camA == 20 && mCamera->camB == -60 && mCamera->camC == -5 && aaa == -20)
+		if (mCamera->camA == 20 
+			&& mCamera->camB == -60 
+			&& mCamera->camC == -5 
+			&& aaa == -20)
 		{
 			mCamera->resetView = false;
 		}
@@ -452,9 +493,11 @@ void ToggleFullScreen(bool isFullscreen)
 {
 	if (isFullscreen == true)
 	{
-		//glutGameModeString("1920x1080:32@60"); //the settings for fullscreen mode
-		glutGameModeString("1366x768:32@60"); //the settings for fullscreen mode
-		glutEnterGameMode(); //set glut to fullscreen using the settings in the line above
+		/* resolutionResolutionSetting example ("1920x1080:32@60"); */
+		const char* screenResolutionSetting = to_string(mScreenWidth + mScreenHeight + ':' + mColorDepth + '@' + mRefreshRate).c_str();
+
+		glutGameModeString(screenResolutionSetting); //the settings for full screen mode
+		glutEnterGameMode(); //set glut to full screen using the settings in the line above
 	}
 
 	else
@@ -466,6 +509,31 @@ void ToggleFullScreen(bool isFullscreen)
 		glutPositionWindow(60, 10);
 	}
 
+}
+
+void arrowPadInput(int key, int x, int y){
+	switch (key){
+	case GLUT_KEY_UP :
+		//do something here
+		mCamera->camB+=10;
+		break;
+	case GLUT_KEY_DOWN:
+		//do something here
+		mCamera->camB -= 10;
+		break;
+	case GLUT_KEY_LEFT:
+		//do something here
+		//solarSystemRotation += 1.0f;
+		mCamera->cameraViewAngle += 1.0f;
+		glRotatef(mCamera->cameraViewAngle, 0.0, 10.0, 0.0);
+		break;
+	case GLUT_KEY_RIGHT:
+		//solarSystemRotation -= 1.0f;
+		mCamera->cameraViewAngle -= 1.0f;
+		glRotatef(mCamera->cameraViewAngle, 0.0, 10.0, 0.0);
+		//do something here
+		break;
+	}
 }
 
 int main(int argc, char* argv[])
@@ -539,6 +607,9 @@ int main(int argc, char* argv[])
 	glutMotionFunc(MouseMotion);
 	glutMouseWheelFunc(mouseWheel);
 	glutIdleFunc(IdleFunc);
+	glutSpecialFunc(arrowPadInput);
+
+
 	// Turn the flow of control over to GLUT
 	glutMainLoop();
 
