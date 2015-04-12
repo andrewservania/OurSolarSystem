@@ -5,7 +5,7 @@ Axes::Axes()
 {
 	mIsXBeingRendered = false, mIsXBeingRendered = false, mIsXBeingRendered = false;
 	mIsXGridBeingRendered = false, mIsYGridBeingRendered = false, mIsZGridBeingRendered = false;
-	mLengthOfAxes = 200;
+	mLengthOfAxes = 300;
 }
 
 Axes::~Axes()
@@ -52,7 +52,6 @@ bool Axes::RenderXAxisGrid()
 {
 
 	glColor3f(1.0f, 0.0f, 0.0f); /*Red*/
-	
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
 

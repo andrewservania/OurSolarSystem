@@ -1,19 +1,19 @@
-#include "UniverseCameraParameters.h"
+#include "Camera.h"
 
 
 
 
-UniverseCameraParameters::UniverseCameraParameters()
+Camera::Camera()
 {
 	 // camA = 20;
 	 // camB = -120;
 	 // camC = -60;
 
-	 camA = 10;
-	 camB = 10;
-	 camC = -120;
+	 camA = 0;
+	 camB = 0;
+	 camC = -336;
 
-	  cameraViewAngle = 0.0f;
+	  cameraViewAngle = -85.0f;
 	  universeLoaded = false;
 
 	  animate = false;
@@ -29,7 +29,7 @@ UniverseCameraParameters::UniverseCameraParameters()
 }
 
 
-UniverseCameraParameters::~UniverseCameraParameters()
+Camera::~Camera()
 {
 }
 

@@ -7,7 +7,7 @@ KeyBoardControl::KeyBoardControl()
 {
 
 }
-KeyBoardControl::KeyBoardControl(Planets* planets, UniverseCameraParameters* camera)
+KeyBoardControl::KeyBoardControl(Planets* planets, Camera* camera)
 {
 	mPlanets = planets;
 	mCamera = camera;

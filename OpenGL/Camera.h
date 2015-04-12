@@ -1,5 +1,5 @@
 #pragma once
-class UniverseCameraParameters
+class Camera
 {
 public:
 	 float camA;
@@ -19,8 +19,8 @@ public:
 	 int lightPosY;
 	 int lightPosZ;
 
-	UniverseCameraParameters();
-	~UniverseCameraParameters();
+	Camera();
+	~Camera();
 	
 };
 

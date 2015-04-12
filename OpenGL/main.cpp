@@ -12,7 +12,7 @@
 
 #include "Planets.h"
 #include "imageloader.h"
-#include "UniverseCameraParameters.h"
+#include "Camera.h"
 #include "KeyBoardControl.h"
 #include "Mercury.h"
 #include "Venus.h"
@@ -53,7 +53,7 @@ string fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pic
 float mCameraRearDistance = -2000;
 float mCameraFrontDistance = 2000;
 
-UniverseCameraParameters* mCamera;
+Camera* mCamera;
 
 unique_ptr<Sun> mSun;
 unique_ptr<Mercury> mMercury;
@@ -164,39 +164,23 @@ void renderAccordingToFPS(){
 void Render(void)
 {
 	
-	renderAccordingToFPS();
+	
 	//// The following line empties the buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glLoadIdentity();
-
-	//gluLookAt(
-	//	0 + mCamera->camA, -1 + mCamera->camB, -1 + mCamera->camC,		//eye
-	//	0 + mCamera->camA, 2 + mCamera->camB, 0 + mCamera->camC,		//center
-	//	0, 1, 0);						// up vector THIS ONE STAYS LIKE ThIS! UNLESS YOU WANT TO WORK WITH HEIGHTS!
 
 	gluLookAt( mCamera->camA,  mCamera->camB,   -mCamera->camC,		//eye
 		       mCamera->camA,  mCamera->camB,    mCamera->camC,		//center
 			   0,			   1,				0);
 
 	glRotatef(mCamera->cameraViewAngle, 0.0, 10.0, 0.0);
-	
-	//Show Universe background picture
-	//ToggleWireVsUniverseCreation(false);
-	glPushMatrix();
-	glLineWidth(2.0);						// Width of ALL Lines in the 3D environment
-	glPopMatrix();
+	//glRotatef(mCamera->cameraViewAngle, 0.0, 0.0, 0.0); This one delivers a cool INCEPTION EFFECT if you the key pressed!! :D :D
 
-	//// Sphere experimentation
-	////glutWireSphere() Function Technical Details:
-	////First variable:  radius: The radius of the sphere. 
-	////Second Variable: slices: The number of subdivisions around the Z axis (similar to lines of longitude). 
-	////Third Variable:  stacks: The number of subdivisions along the Z axis (similar to lines of latitude). 
-	////Description: Renders a sphere centered at the modeling coordinates origin of the specified radius. 
-	////			   The sphere is subdivided around the Z axis into slices and along the Z axis into stacks.
+	//glPushMatrix();
+	//glLineWidth(2.0);						// Width of ALL Lines in the 3D environment
+	//glPopMatrix();
 
-	////Rotate on the x axis
-	//glRotatef(aaa, 0.0, 0.0, 0.0);
 
 	////Rotate on the y axis VERY IMPORTANT (universe is not upside down due to this:)
 	/*OpenGL Research update: 
@@ -249,8 +233,8 @@ void Render(void)
 	mNeptune->Render();
 
 	mAxes->RenderXAxisGrid();
-    mAxes->RenderYAxisGrid();
-	mAxes->RenderZAxisGrid();
+    //mAxes->RenderYAxisGrid();
+	//mAxes->RenderZAxisGrid();
 
 	mPluto->Render();
 
@@ -259,13 +243,14 @@ void Render(void)
 	//glLoadIdentity();
 
 	glutSwapBuffers();
-
+	renderAccordingToFPS();
 }
 
 void Reshape(GLint width, GLint height)
 {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+
 	gluPerspective(90, width / (float)height, 1, 2000);
 	glMatrixMode(GL_MODELVIEW);
 }
@@ -347,13 +332,14 @@ void mouseWheel(int button, int dir, int x, int y)
 	{
 		// Rotate Up
 		mCamera->camC += 8.0f;					// Forward
-
+		cout << mCamera->camC << "      \r";
 	}
 	else
 	{
 		// Rotate Down
 		mCamera->camC -= 8.0f;					// Back up
-	}
+		cout << mCamera->camC << "      \r";
+	} 
 }
 
 void MouseMotion(int x, int y)
@@ -574,11 +560,11 @@ int main(int argc, char* argv[])
 	mVenus->SetPosition(200, 0, 0);
 	mEarth->SetPosition(300, 0, 0);
 	mMars->SetPosition(400, 0, 0);
-	mJupiter->SetPosition(600, 0, 0);
-	mSaturn->SetPosition(800, 0, 0);
-	mUranus->SetPosition(100, 0, 0);
-	mNeptune->SetPosition(1200, 0, 0);
-	mPluto->SetPosition(1400, 0, 0);
+	mJupiter->SetPosition(500, 0, 0);
+	mSaturn->SetPosition(600, 0, 0);
+	mUranus->SetPosition(700, 0, 0);
+	mNeptune->SetPosition(800, 0, 0);
+	mPluto->SetPosition(900, 0, 0);
 
 	mMercury->SetSize(5);
 	mVenus->SetSize(6);
@@ -590,7 +576,7 @@ int main(int argc, char* argv[])
 	mNeptune->SetSize(18);
 	mPluto->SetSize(3);
 
-	mUniverseBackground = make_unique<UniverseBackground>();
+	mUniverseBackground = make_unique<UniverseBackground>(1000);
 	mAxes = make_unique<Axes>();
 	//mMercury = new Mercury();
 	//mVenus = new Venus();
@@ -603,7 +589,7 @@ int main(int argc, char* argv[])
 	//mPluto = new Pluto();
 
 
-	mCamera = new UniverseCameraParameters();
+	mCamera = new Camera();
 
 	solarSystemPlanets = new Planets();
 	keyboardControl = new KeyBoardControl(solarSystemPlanets, mCamera);

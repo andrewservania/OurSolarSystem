@@ -30,9 +30,9 @@ Planet::~Planet()
 bool Planet::Render(){
 
 	glPushMatrix();
-	glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 1);
+	//glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 0);
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-
+	glRotatef( -90.0f, 100.0f, 0.0f, 0.0f);
 	CreateTexturedPlanet(mRadius, mSlices, mStacks);
 
 

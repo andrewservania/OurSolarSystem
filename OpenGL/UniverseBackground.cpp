@@ -1,8 +1,9 @@
 #include "UniverseBackground.h"
 
 
-UniverseBackground::UniverseBackground()
+UniverseBackground::UniverseBackground(int _radius)
 {
+	radius = _radius;
 	fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 	mQuad = gluNewQuadric();
 	Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str());
@@ -22,7 +23,7 @@ bool UniverseBackground::Render()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
 	gluQuadricTexture(mQuad, 1);
-	gluSphere(mQuad, 1000, 100, 100);
+	gluSphere(mQuad, radius, 100, 100);
 
 	mIsUniverseRendering = true;
 	return mIsUniverseRendering;
