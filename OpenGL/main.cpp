@@ -233,8 +233,8 @@ void Render(void)
 	mNeptune->Render();
 
 	mAxes->RenderXAxisGrid();
-    //mAxes->RenderYAxisGrid();
-	//mAxes->RenderZAxisGrid();
+    mAxes->RenderYAxisGrid();
+	mAxes->RenderZAxisGrid();
 
 	mPluto->Render();
 

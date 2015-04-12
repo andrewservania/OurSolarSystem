@@ -10,13 +10,13 @@ Camera::Camera()
 	 // camC = -60;
 
 	 camA = 0;
-	 camB = 0;
+	 camB = 30;
 	 camC = -336;
 
-	  cameraViewAngle = -85.0f;
+	  cameraViewAngle = -10.0f;
 	  universeLoaded = false;
 
-	  animate = false;
+	  animate = true;
 	  visibility = true;
 	  colorValue = 0.0f;
 	  light = true;
