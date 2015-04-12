@@ -36,7 +36,7 @@ const int mScreenHeight = 768;
 const int mColorDepth   = 32;
 const int mRefreshRate  = 60;
 
-
+int FPS = 60; //Default value: 60
 
 //Global variables:
 float solarSystemRotation = 0;
@@ -149,10 +149,22 @@ void drawText(string text,float x,float y,float z){
 }
 
 
+void SetFPS(int framesPerSecond){
+
+	FPS = framesPerSecond;
+}
+
+void renderAccordingToFPS(){
+	Sleep(1000 / FPS);
+}
+
+
+
 //Display is called continuously. So this is your graphics loop.
-void Display(void)
+void Render(void)
 {
 	
+	renderAccordingToFPS();
 	//// The following line empties the buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -596,11 +608,12 @@ int main(int argc, char* argv[])
 	solarSystemPlanets = new Planets();
 	keyboardControl = new KeyBoardControl(solarSystemPlanets, mCamera);
 
+	SetFPS(60);
 	// Initialize OpenGL graphics state
 	InitGraphics();
 
 	// Register callbacks:
-	glutDisplayFunc(Display);
+	glutDisplayFunc(Render);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(KeyboardFunc);
 	glutMouseFunc(MouseButton);
