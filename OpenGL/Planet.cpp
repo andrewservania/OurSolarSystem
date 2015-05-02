@@ -62,14 +62,14 @@ void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat cust
 		mColorValue + customV);
 	//	float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 	//glColor3f(r, r, r);
-	for (int i = 0; i < numPoints; i++)
-	{
-		// putting 2.2 instead of 2.0 fixed the LINE issue!! Nice :)
-		double Angle = i * (2.2*PI / numPoints);	// use 360 instead of 2.0*PI if
-		GLfloat X = (GLfloat)cos(Angle)*radius;			// you use d_cos and d_sin
-		GLfloat Y = (GLfloat)sin(Angle)*radius;
-		glVertex2f(X, Y);
-	}
+	//for (int i = 0; i < numPoints; i++)
+	//{
+	//	// putting 2.2 instead of 2.0 fixed the LINE issue!! Nice :)
+	//	double Angle = i * (2.2*PI / numPoints);	// use 360 instead of 2.0*PI if
+	//	GLfloat X = (GLfloat)cos(Angle)*radius;			// you use d_cos and d_sin
+	//	GLfloat Y = (GLfloat)sin(Angle)*radius;
+	//	glVertex2f(X, Y);
+	//}
 	glEnd();
 }
 

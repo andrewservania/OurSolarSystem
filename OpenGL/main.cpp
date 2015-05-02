@@ -73,47 +73,6 @@ unique_ptr<Axes> mAxes;
 
 
 
-//GLuint loadTexture(Image* image) {
-//
-//	GLuint textureId;
-//	glGenTextures(1, &textureId); //Make room for our texture
-//	glBindTexture(GL_TEXTURE_2D, textureId); //Tell OpenGL which texture to edit
-//	//Map the image to the texture
-//	glTexImage2D(GL_TEXTURE_2D,                //Always GL_TEXTURE_2D
-//		0,                            //0 for now
-//		GL_RGB,                       //Format OpenGL uses for image
-//		image->width, image->height,  //Width and height
-//		0,                            //The border of the image
-//		GL_RGB, //GL_RGB, because pixels are stored in RGB format
-//		GL_UNSIGNED_BYTE, //GL_UNSIGNED_BYTE, because pixels are stored
-//		//as unsigned numbers
-//		image->pixels);               //The actual pixel data
-//
-//	return textureId; //Returns the id of the texture
-//}
-
-//void ToggleWireVsUniverseCreation(bool createUniverse)
-//{
-//
-//	if (createUniverse == true)
-//	{
-//
-//		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-//		glEnable(GL_TEXTURE_2D);
-//		glBindTexture(GL_TEXTURE_2D, _textureId);
-//		gluQuadricTexture(quad, 1);
-//		gluSphere(quad, 300, 50, 50);
-//	}
-//	else
-//	{
-//		glColor3f(0.0f, 0.0f, 1.0f);
-//		glutWireSphere(280, 200, 256);
-//	}
-//
-//
-//}
-
-
 
 string fontFilename = "...\\OpenGL\\Resources\\Fonts\\";
 string fontName = "FreeSerif.ttf";
@@ -158,87 +117,32 @@ void Display(void)
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glLoadIdentity();
 
-	//gluLookAt(
-	//	0 + mCamera->camA, -1 + mCamera->camB, -1 + mCamera->camC,		//eye
-	//	0 + mCamera->camA, 2 + mCamera->camB, 0 + mCamera->camC,		//center
-	//	0, 1, 0);						// up vector THIS ONE STAYS LIKE ThIS! UNLESS YOU WANT TO WORK WITH HEIGHTS!
-
 	gluLookAt( mCamera->camA,  mCamera->camB,   -mCamera->camC,		//eye
-		       mCamera->camA,  mCamera->camB,    mCamera->camC,		//center
+			   mCamera->camA,  mCamera->camB,    mCamera->camC,		//center
 			   0,			   1,				0);
 
 	glRotatef(mCamera->cameraViewAngle, 0.0, 10.0, 0.0);
 	
-	//Show Universe background picture
-	//ToggleWireVsUniverseCreation(false);
 	glPushMatrix();
 	glLineWidth(2.0);						// Width of ALL Lines in the 3D environment
 	glPopMatrix();
 
-	//// Sphere experimentation
-	////glutWireSphere() Function Technical Details:
-	////First variable:  radius: The radius of the sphere. 
-	////Second Variable: slices: The number of subdivisions around the Z axis (similar to lines of longitude). 
-	////Third Variable:  stacks: The number of subdivisions along the Z axis (similar to lines of latitude). 
-	////Description: Renders a sphere centered at the modeling coordinates origin of the specified radius. 
-	////			   The sphere is subdivided around the Z axis into slices and along the Z axis into stacks.
-
-	////Rotate on the x axis
-	//glRotatef(aaa, 0.0, 0.0, 0.0);
-
-	////Rotate on the y axis VERY IMPORTANT (universe is not upside down due to this:)
-	/*OpenGL Research update: 
-	OpenGL renders everything upside down as a standard.
-	  Because OpenGL assumes Y coordinates going from bottom to top. 
-	  If your code assumes the opposite will display things upside down. 
-	  You can setup your scene accordingly in order handle this properly by using
-	  glLookAt().
-	  */
-
-
-
-
-
-	////emit light from the next sphere object
-	////GLfloat mat_emission[] = {0.3, 0.2, 0.2, 1.0};
-	////glMaterialfv(GL_FRONT, GL_EMISSION, mat_emission);
-
-
-	//NOTE!! StackOverflow suggestion:
-	//I've just noticed the first line of your question - 
-	//you don't want to make those functions static, 
-	//you want to make them const. Making them static means 
-	//that they are no longer associated with an object 
-	//(so they can't access any non-static members), 
-	//and making the data static means it will be shared with 
-	//all objects of this type. This may well not be what you want. 
-	//Making them const simply means that they can't modify any members, but can still access them
-
-	//drawText("Hello World", 0, 0, 0);
 
 	mUniverseBackground->Render();
 
 	mSun->Render();
-
 	mMercury->Render();
-
 	mVenus->Render();
-
 	mEarth->Render();
-
 	mMars->Render();
-
 	mJupiter->Render();
-
 	mSaturn->Render();
-
 	mUranus->Render();
-
 	mNeptune->Render();
 
-	mAxes->RenderXAxisGrid();
-    mAxes->RenderYAxisGrid();
-	mAxes->RenderZAxisGrid();
+	//mAxes->RenderXAxisGrid();
+	//mAxes->RenderYAxisGrid();
+	//mAxes->RenderZAxisGrid();
 
 	mPluto->Render();
 
@@ -285,41 +189,6 @@ void InitGraphics(void)
 
 }
 
-// Andy: If this function is NOT called. All elements will get a static bright color
-void letThereBeLight()
-{
-	glClearColor(0, 0, 0, 0);
-	glEnable(GL_DEPTH_TEST);
-
-	GLfloat mat_specular[] = { 0.0, 0.0, 0.0, 0.0 };
-	GLfloat mat_shininess[] = { 40.0 };
-
-	GLfloat light_position[] = {
-		0.0f + mCamera->lightPosX,
-		1.0f + mCamera->lightPosY,
-		1.0f + mCamera->lightPosZ, -0.3f };
-
-
-	glClearColor(0.0, 0.0, 0.0, 0.0);
-	glShadeModel(GL_SMOOTH);
-
-	glMaterialfv(GL_FRONT, GL_AMBIENT, mat_specular);
-	glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-
-	glEnable(GL_COLOR_MATERIAL);
-	glEnable(GL_LIGHTING);
-
-	if (mCamera->light == true)
-	{
-		glEnable(GL_LIGHT0);
-	}
-	else
-	{
-		glDisable(GL_LIGHT0);
-	}
-	glEnable(GL_DEPTH_TEST);
-}
 
 void MouseButton(int button, int state, int x, int y)
 {
@@ -387,7 +256,7 @@ void IdleFunc(void)
 	if (mCamera->animate == true)
 	{
 		solarSystemRotation += 1.0f;
-		mCamera->cameraViewAngle -= 0.05f;
+	mCamera->cameraViewAngle -= 0.05f;
 	}
 	//Gradual Camera Reset///////////
 	while (mCamera->resetView == true)
