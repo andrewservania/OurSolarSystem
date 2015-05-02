@@ -19,8 +19,11 @@ private:
 	bool mIsUniverseBackgroundInitialized;
 	string fileLocationOfUniverses;
 
+	int radius; //Max: 1000, above 1000 will cause your view to display a black hole. 
+				//Possibly indicating a distance larger than the render distance.
+
 public:
-	UniverseBackground();
+	UniverseBackground(int _radius);
 	~UniverseBackground();
 	bool InitializeUniverseBackground();
 	bool Render();

@@ -13,6 +13,7 @@ private:
 	bool mIsXBeingRendered , mIsYBeingRendered, mIsZBeingRendered;
 	bool mIsXGridBeingRendered, mIsYGridBeingRendered, mIsZGridBeingRendered;
 	int mLengthOfAxes;
+	int depth;
 public:
 	Axes();
 	~Axes();

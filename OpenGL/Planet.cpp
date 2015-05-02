@@ -30,9 +30,9 @@ Planet::~Planet()
 bool Planet::Render(){
 
 	glPushMatrix();
-	glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 1);
+	//glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 0);
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-
+	glRotatef( -90.0f, 100.0f, 0.0f, 0.0f);
 	CreateTexturedPlanet(mRadius, mSlices, mStacks);
 
 
@@ -53,8 +53,11 @@ void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat cust
 {
 
 	double PI = 3.1415926535897f;
+
+
 	glBegin(GL_LINE_STRIP);
 
+	
 	//Standard gray-white color
 	glColor4f(1.0f + mColorValue + customV, 1.0f +
 		mColorValue + customV, 1.0f +

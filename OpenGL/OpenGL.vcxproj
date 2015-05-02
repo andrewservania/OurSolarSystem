@@ -180,7 +180,7 @@
     <ClCompile Include="Saturn.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="UniverseBackground.cpp" />
-    <ClCompile Include="UniverseCameraParameters.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Uranus.cpp" />
     <ClCompile Include="Venus.cpp" />
   </ItemGroup>
@@ -200,7 +200,7 @@
     <ClInclude Include="Saturn.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="UniverseBackground.h" />
-    <ClInclude Include="UniverseCameraParameters.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Uranus.h" />
     <ClInclude Include="Venus.h" />
   </ItemGroup>

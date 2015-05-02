@@ -5,7 +5,8 @@ Axes::Axes()
 {
 	mIsXBeingRendered = false, mIsXBeingRendered = false, mIsXBeingRendered = false;
 	mIsXGridBeingRendered = false, mIsYGridBeingRendered = false, mIsZGridBeingRendered = false;
-	mLengthOfAxes = 200;
+	mLengthOfAxes = 140;
+	depth = 5*mLengthOfAxes;
 }
 
 Axes::~Axes()
@@ -50,22 +51,22 @@ bool Axes::RenderZAxis()
 
 bool Axes::RenderXAxisGrid()
 {
+	
 
 	glColor3f(1.0f, 0.0f, 0.0f); /*Red*/
-	
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
-		glVertex3f( 0.0f, 0.0f, 0.0f + i * 3);
-		glVertex3f( mLengthOfAxes, 0.0f, 0.0f + i * 3);
+		glVertex3f(0.0f, 0.0f, 0.0f + i * 5);
+		glVertex3f(depth, 0.0f, i * 5);       
 
-		glVertex3f(0.0f + i * 3, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * 3, 0.0f, mLengthOfAxes);
+	    glVertex3f(0.0f + i * 5, 0.0f, 0.0f);
+		glVertex3f(0.0f + i * 5, 0.0f, depth);
 
 	}
 	glClearColor(0, 0, 0, 1);
 	glEnd();
-	for (int i = 0; i < mLengthOfAxes; i++){
+	for (int i = 0; i < depth; i++){
 
 		if ((i % 100) == 0){
 			drawText(to_string(i), i, 0, 0);
@@ -82,16 +83,16 @@ bool Axes::RenderYAxisGrid()
 
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
-		glVertex3f(0.0f + i * 3, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * 3, mLengthOfAxes, 0.0f);
+		glVertex3f(0.0f + i * 5, 0.0f, 0.0f);
+		glVertex3f(0.0f + i * 5, depth, 0.0f);
 
-		glVertex3f( 0.0f, 0.0f + i * 3,0.0f);
-		glVertex3f(mLengthOfAxes, 0.0f + i * 3, 0.0f);
+		glVertex3f( 0.0f, 0.0f + i * 5,0.0f);
+		glVertex3f(depth, 0.0f + i * 5, 0.0f);
 	}
 	
 	glEnd();
 
-	for (int i = 0; i < mLengthOfAxes; i++){
+	for (int i = 0; i < depth; i++){
 
 		if ((i % 100) == 0){
 			drawText(to_string(i), 0, i, 0);
@@ -109,16 +110,16 @@ bool Axes::RenderZAxisGrid()
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
-		glVertex3f(0.0f,0.0f + i * 3, 0.0f);
-		glVertex3f(0.0f,0.0f + i * 3, mLengthOfAxes );
+		glVertex3f(0.0f,0.0f + i * 5, 0.0f);
+		glVertex3f(0.0f, 0.0f + i * 5, depth);
 
-		glVertex3f(0.0f, 0.0f, 0.0f + i * 3);
-		glVertex3f(0.0f, mLengthOfAxes, 0.0f + i * 3);
+		glVertex3f(0.0f, 0.0f, 0.0f + i * 5);
+		glVertex3f(0.0f, depth, 0.0f + i * 5);
 	}
 
 	glEnd();
 
-	for (int i = 0; i < mLengthOfAxes; i++){
+	for (int i = 0; i < depth; i++){
 
 		if ((i % 100)==0 ){
 			drawText(to_string(i), 0, 0, i);

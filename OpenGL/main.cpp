@@ -12,7 +12,7 @@
 
 #include "Planets.h"
 #include "imageloader.h"
-#include "UniverseCameraParameters.h"
+#include "Camera.h"
 #include "KeyBoardControl.h"
 #include "Mercury.h"
 #include "Venus.h"
@@ -36,7 +36,7 @@ const int mScreenHeight = 768;
 const int mColorDepth   = 32;
 const int mRefreshRate  = 60;
 
-
+int FPS = 60; //Default value: 60
 
 //Global variables:
 float solarSystemRotation = 0;
@@ -53,7 +53,7 @@ string fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pic
 float mCameraRearDistance = -2000;
 float mCameraFrontDistance = 2000;
 
-UniverseCameraParameters* mCamera;
+Camera* mCamera;
 
 unique_ptr<Sun> mSun;
 unique_ptr<Mercury> mMercury;
@@ -108,9 +108,21 @@ void drawText(string text,float x,float y,float z){
 }
 
 
+void SetFPS(int framesPerSecond){
+
+	FPS = framesPerSecond;
+}
+
+void renderAccordingToFPS(){
+	Sleep(1000 / FPS);
+}
+
+
+
 //Display is called continuously. So this is your graphics loop.
-void Display(void)
+void Render(void)
 {
+	
 	
 	//// The following line empties the buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -151,13 +163,14 @@ void Display(void)
 	//glLoadIdentity();
 
 	glutSwapBuffers();
-
+	renderAccordingToFPS();
 }
 
 void Reshape(GLint width, GLint height)
 {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+
 	gluPerspective(90, width / (float)height, 1, 2000);
 	glMatrixMode(GL_MODELVIEW);
 }
@@ -204,13 +217,14 @@ void mouseWheel(int button, int dir, int x, int y)
 	{
 		// Rotate Up
 		mCamera->camC += 8.0f;					// Forward
-
+		cout << mCamera->camC << "      \r";
 	}
 	else
 	{
 		// Rotate Down
 		mCamera->camC -= 8.0f;					// Back up
-	}
+		cout << mCamera->camC << "      \r";
+	} 
 }
 
 void MouseMotion(int x, int y)
@@ -431,11 +445,11 @@ int main(int argc, char* argv[])
 	mVenus->SetPosition(200, 0, 0);
 	mEarth->SetPosition(300, 0, 0);
 	mMars->SetPosition(400, 0, 0);
-	mJupiter->SetPosition(600, 0, 0);
-	mSaturn->SetPosition(800, 0, 0);
-	mUranus->SetPosition(100, 0, 0);
-	mNeptune->SetPosition(1200, 0, 0);
-	mPluto->SetPosition(1400, 0, 0);
+	mJupiter->SetPosition(500, 0, 0);
+	mSaturn->SetPosition(600, 0, 0);
+	mUranus->SetPosition(700, 0, 0);
+	mNeptune->SetPosition(800, 0, 0);
+	mPluto->SetPosition(900, 0, 0);
 
 	mMercury->SetSize(5);
 	mVenus->SetSize(6);
@@ -447,7 +461,7 @@ int main(int argc, char* argv[])
 	mNeptune->SetSize(18);
 	mPluto->SetSize(3);
 
-	mUniverseBackground = make_unique<UniverseBackground>();
+	mUniverseBackground = make_unique<UniverseBackground>(1000);
 	mAxes = make_unique<Axes>();
 	//mMercury = new Mercury();
 	//mVenus = new Venus();
@@ -460,16 +474,17 @@ int main(int argc, char* argv[])
 	//mPluto = new Pluto();
 
 
-	mCamera = new UniverseCameraParameters();
+	mCamera = new Camera();
 
 	solarSystemPlanets = new Planets();
 	keyboardControl = new KeyBoardControl(solarSystemPlanets, mCamera);
 
+	SetFPS(60);
 	// Initialize OpenGL graphics state
 	InitGraphics();
 
 	// Register callbacks:
-	glutDisplayFunc(Display);
+	glutDisplayFunc(Render);
 	glutReshapeFunc(Reshape);
 	glutKeyboardFunc(KeyboardFunc);
 	glutMouseFunc(MouseButton);
