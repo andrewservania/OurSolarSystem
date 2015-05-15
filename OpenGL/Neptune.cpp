@@ -13,7 +13,7 @@ Neptune::Neptune()
 	
 
 
-	glColor3f(0.6f, 0.5f, 0.7f);
+	//glColor3f(0.6f, 0.5f, 0.7f); Don't call!
 	mPlanetTextureFileName = "texture_neptune.bmp";
 
 	//createTexturedPlanet parameters:
@@ -21,11 +21,7 @@ Neptune::Neptune()
 	mSlices = 20;			//Default: 50 Earth specific
 	mStacks = 10;			//Default: 50 Earth specific
 
-	//DrawOrbit parameters:
-	mOrbitRadius = 140;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.3f;    //Default: 1.0f TODO: Figure out this necessary Value!
+
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }

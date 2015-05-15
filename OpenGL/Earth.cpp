@@ -16,12 +16,11 @@ Earth::Earth()
 
 
 	mPlanetTextureFileName = "texture_earth_clouds.bmp";
-	mOrbitRadius = 50;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
+
 	mRadius = 8;			//Default: 8  Earth specific
 	mSlices = 50;			//Default: 50 Earth specific
 	mStacks = 50;			//Default: 50 Earth specific
-	mCustomValue = 0.8f;    //Default: 0.8f TODO: Figure out this necessary Value!
+
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
@@ -30,6 +29,21 @@ Earth::Earth()
 Earth::~Earth()
 {
 }
+
+bool Earth::Render()
+{
+	glPushMatrix();
+	//glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 0);
+	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+	glRotatef(-90.0f, 100.0f, 0.0f, 0.0f);
+	CreateTexturedPlanet(mRadius, mSlices, mStacks);
+
+
+	glPopMatrix();
+
+	return mRenderStatus;
+}
+
 
 
 

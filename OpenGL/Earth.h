@@ -10,5 +10,6 @@ class Earth :
 public:
 	Earth();
 	~Earth();
+	bool Render() override;
 };
 

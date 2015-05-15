@@ -14,6 +14,8 @@ private:
 	bool mIsXGridBeingRendered, mIsYGridBeingRendered, mIsZGridBeingRendered;
 	int mLengthOfAxes;
 	int depth;
+	int squareSizeInGrid;
+
 public:
 	Axes();
 	~Axes();

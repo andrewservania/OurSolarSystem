@@ -13,7 +13,7 @@ Uranus::Uranus()
 	
 
 
-	glColor3f(0.4f, 0.4f, 1.0f); // light blue
+	//glColor3f(0.4f, 0.4f, 1.0f); // light blue DON'T CALL!
 
 	mPlanetTextureFileName = "texture_uranus.bmp";
 
@@ -23,18 +23,7 @@ Uranus::Uranus()
 	mStacks = 10;			//Default: 50 Earth specific
 
 
-	//Uranus' rings! Implement render method seperately!
-	//glRotatef(90, 1, 0, 0);
-	//drawOrbit(6.4f, 20, 1, 1);
-	//drawOrbit(6.2f, 20, 1, 1);
 
-
-
-	//DrawOrbit parameters:
-	mOrbitRadius = 110;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.4f;    //Default: 1.0f TODO: Figure out this necessary Value!
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }

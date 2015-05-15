@@ -5,8 +5,9 @@ Axes::Axes()
 {
 	mIsXBeingRendered = false, mIsXBeingRendered = false, mIsXBeingRendered = false;
 	mIsXGridBeingRendered = false, mIsYGridBeingRendered = false, mIsZGridBeingRendered = false;
-	mLengthOfAxes = 140;
-	depth = 5*mLengthOfAxes;
+	mLengthOfAxes = 100;
+	squareSizeInGrid = 10;
+	depth = squareSizeInGrid*mLengthOfAxes;
 }
 
 Axes::~Axes()
@@ -57,11 +58,11 @@ bool Axes::RenderXAxisGrid()
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
-		glVertex3f(0.0f, 0.0f, 0.0f + i * 5);
-		glVertex3f(depth, 0.0f, i * 5);       
+		glVertex3f(0.0f, 0.0f, 0.0f + i * squareSizeInGrid);
+		glVertex3f(depth, 0.0f, i * squareSizeInGrid);       
 
-	    glVertex3f(0.0f + i * 5, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * 5, 0.0f, depth);
+	    glVertex3f(0.0f + i * squareSizeInGrid, 0.0f, 0.0f);
+		glVertex3f(0.0f + i * squareSizeInGrid, 0.0f, depth);
 
 	}
 	glClearColor(0, 0, 0, 1);
@@ -83,11 +84,11 @@ bool Axes::RenderYAxisGrid()
 
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
-		glVertex3f(0.0f + i * 5, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * 5, depth, 0.0f);
+		glVertex3f(0.0f + i * squareSizeInGrid, 0.0f, 0.0f);
+		glVertex3f(0.0f + i * squareSizeInGrid, depth, 0.0f);
 
-		glVertex3f( 0.0f, 0.0f + i * 5,0.0f);
-		glVertex3f(depth, 0.0f + i * 5, 0.0f);
+		glVertex3f( 0.0f, 0.0f + i * squareSizeInGrid,0.0f);
+		glVertex3f(depth, 0.0f + i * squareSizeInGrid, 0.0f);
 	}
 	
 	glEnd();
@@ -110,11 +111,11 @@ bool Axes::RenderZAxisGrid()
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
-		glVertex3f(0.0f,0.0f + i * 5, 0.0f);
-		glVertex3f(0.0f, 0.0f + i * 5, depth);
+		glVertex3f(0.0f,0.0f + i * squareSizeInGrid, 0.0f);
+		glVertex3f(0.0f, 0.0f + i * squareSizeInGrid, depth);
 
-		glVertex3f(0.0f, 0.0f, 0.0f + i * 5);
-		glVertex3f(0.0f, depth, 0.0f + i * 5);
+		glVertex3f(0.0f, 0.0f, 0.0f + i * squareSizeInGrid);
+		glVertex3f(0.0f, depth, 0.0f + i * squareSizeInGrid);
 	}
 
 	glEnd();

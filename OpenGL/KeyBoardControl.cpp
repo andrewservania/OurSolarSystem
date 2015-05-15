@@ -7,9 +7,9 @@ KeyBoardControl::KeyBoardControl()
 {
 
 }
-KeyBoardControl::KeyBoardControl(Planets* planets, Camera* camera)
+KeyBoardControl::KeyBoardControl(Camera* camera)
 {
-	mPlanets = planets;
+
 	mCamera = camera;
 }
 
@@ -53,7 +53,7 @@ void KeyBoardControl::ListenToKeys(unsigned char key, int x, int y)
 
 	case 'r': mCamera->resetView = true;														break; // reset camera view to default position
 
-	case 'm': mPlanets->showOrbitalLanes = !mPlanets->showOrbitalLanes;							break; // Draw Orbital Lanes
+	case 'm':																					break; // Draw Orbital Lanes
 
 	case 't': mCamera->lightPosX++;																break;
 	case 'y': mCamera->lightPosY++;																break;

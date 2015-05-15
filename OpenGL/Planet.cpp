@@ -5,12 +5,12 @@ Planet::Planet()
 {
 	mRenderStatus = false;
 	mShowOrbitalLanes = true;
-	mColorValue = 0.0f;
-	mVisibility = true;
+	//mColorValue = 0.0f;
+	//mVisibility = true;
 	mIsImageLoaded = false;
 	mPlanetTextureDefaultFolder = "..\\OpenGL\\Resources\\Planets\\";
 	mPlanetTextureFileName = "";
-	mCustomValue = 0.0f;
+	//mCustomValue = 0.0f;
 	mSolarSystemRotation = 0;
 	//glColor4f(0.0f, 0.0f, 0.0f, 0.0f);
 	
@@ -37,16 +37,10 @@ bool Planet::Render(){
 
 
 	glPopMatrix();
-	if (mShowOrbitalLanes == true){
-		DrawOrbit(mOrbitRadius, mNumberOfPoints, mVisibility, mCustomValue);
-	}
+
 	return mRenderStatus;
 }
 
-void Planet::SetVisibility(bool visibility)
-{
-	mVisibility = visibility;
-}
 
 /*Standard Orbit drawing function for all planets*/
 void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat customV)
@@ -56,7 +50,7 @@ void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat cust
 
 
 	glBegin(GL_LINE_STRIP);
-
+	glRotatef(-45.0f, 100.0f, 0.0f, 0.0f);
 	
 	//Standard gray-white color
 	glColor4f(1.0f + mColorValue + customV, 1.0f +
@@ -69,14 +63,14 @@ void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat cust
 	//TODO: The for-loop below is responsible for rendering the
 	//		orbit lanes of planets, however, the orientation is
 	//		not being rendered properly. FIX
-	//for (int i = 0; i < numPoints; i++)
-	//{
+	for (int i = 0; i < numPoints; i++)
+	{
 	//	 putting 2.2 instead of 2.0 fixed the LINE issue!! Nice :)
-	//	double Angle = i * (2.2*PI / numPoints);	// use 360 instead of 2.0*PI if
-	//	GLfloat X = (GLfloat)cos(Angle)*radius;			// you use d_cos and d_sin
-	//	GLfloat Y = (GLfloat)sin(Angle)*radius;
-	//	glVertex2f(X, Y);
-	//}
+		double Angle = i * (2.2*PI / numPoints);	// use 360 instead of 2.0*PI if
+		GLfloat X = (GLfloat)cos(Angle)*radius;			// you use d_cos and d_sin
+		GLfloat Y = (GLfloat)sin(Angle)*radius;
+		glVertex2f(X, Y);
+	}
 	glEnd();
 }
 
@@ -104,7 +98,7 @@ void Planet::LoadPlanetImage(const char* fileName)
 	if (mIsImageLoaded == false)
 	{
 		glEnable(GL_DEPTH_TEST);
-	  //glEnable(GL_LIGHTING);
+//	    glEnable(GL_LIGHTING); powerfull lighting effect. Use it wisely!
 		glEnable(GL_LIGHT0);
 		glEnable(GL_NORMALIZE);
 		glEnable(GL_COLOR_MATERIAL);
@@ -192,7 +186,7 @@ GLfloat Planet::GetSize()
 void Planet::SetSize(GLfloat radius)
 {
 	mRadius = radius;
-	mOrbitRadius = mRadius*4;
+	//mOrbitRadius = mRadius*4;
 }
 
 

@@ -17,7 +17,7 @@ protected:
 	bool mShowOrbitalLanes;
 	float mColorValue;
 
-	bool mVisibility;
+
 	bool mIsImageLoaded;
 
 	string mPlanetTextureDefaultFolder;
@@ -29,14 +29,13 @@ protected:
 	GLuint mTextureIDPlanet;
 	GLUquadric *mQuadPlanet;
 
-	GLfloat mOrbitRadius;
-	int mNumberOfPoints;
+
 
 	GLfloat mRadius;
 	int mSlices;
 	int mStacks;
 
-	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
+//	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
 	int mUnknownRotationValue;
 
 	/* To return complete planet coordinates in one data-structure*/
@@ -51,8 +50,8 @@ protected:
 public:
 	Planet();
 	~Planet();
-	void SetVisibility(bool visibility);
-	bool Render();
+	
+	bool virtual Render();
 	GLuint LoadPlanetTexture(Image* image);
 	void LoadPlanetImage(const char* fileName);
 	void CreateTexturedPlanet(GLfloat radius, int slices, int stacks);

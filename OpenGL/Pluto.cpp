@@ -12,7 +12,7 @@ Pluto::Pluto()
 	
 
 
-	glColor3f(0.6f, 0.3f, 0.1f); //dark brown
+	//glColor3f(0.6f, 0.3f, 0.1f); //dark brown don't call!
 	
 	mPlanetTextureFileName = "texture_pluto_fictional.bmp";
 
@@ -25,11 +25,6 @@ Pluto::Pluto()
 	//glRotatef(solarSystemRotation / 10, 0, 0, 1);
 
 
-	//DrawOrbit parameters:
-	mOrbitRadius = 140;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.3f;    //Default: 1.0f TODO: Figure out this necessary Value!
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }

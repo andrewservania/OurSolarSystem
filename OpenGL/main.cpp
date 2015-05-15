@@ -5,11 +5,9 @@
 #include <iostream>
 #include <memory>
 #include <windows.h>
-
 #include "glut.h"
 #include "freeglut.h"
 #include "GL.h"
-
 #include "Planets.h"
 #include "imageloader.h"
 #include "Camera.h"
@@ -24,10 +22,8 @@
 #include "Neptune.h"
 #include "Pluto.h"
 #include "Sun.h"
-
 #include "UniverseBackground.h"
 #include "Axes.h"
-
 
 using namespace std;
 
@@ -46,7 +42,7 @@ float aaa = -20.0f, bbb = 0.0f, ccc = 0.0f;
 GLuint _textureId; //The id of the texture
 GLUquadric *quad;
 
-Planets*solarSystemPlanets;
+//Planets*solarSystemPlanets;
 KeyBoardControl*keyboardControl;
 string fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 
@@ -67,7 +63,7 @@ unique_ptr<Neptune> mNeptune;
 unique_ptr<Pluto> mPluto;
 
 unique_ptr<UniverseBackground> mUniverseBackground;
-unique_ptr<Axes> mAxes;
+//unique_ptr<Axes> mAxes;
 
 
 
@@ -213,31 +209,21 @@ void Render(void)
 	//drawText("Hello World", 0, 0, 0);
 
 	mUniverseBackground->Render();
-
 	mSun->Render();
-
 	mMercury->Render();
-
 	mVenus->Render();
-
 	mEarth->Render();
-
 	mMars->Render();
-
 	mJupiter->Render();
-
 	mSaturn->Render();
-
 	mUranus->Render();
-
 	mNeptune->Render();
-
-	mAxes->RenderXAxisGrid();
-    mAxes->RenderYAxisGrid();
-	mAxes->RenderZAxisGrid();
-
 	mPluto->Render();
+	////mAxes->RenderXAxisGrid();
+ //   //mAxes->RenderYAxisGrid();
+	////mAxes->RenderZAxisGrid();
 
+	//mPluto->Render();
 
 
 	//glLoadIdentity();
@@ -571,28 +557,20 @@ int main(int argc, char* argv[])
 	mEarth->SetSize(20);
 	mMars->SetSize(10);
 	mJupiter->SetSize(27);
-	mSaturn->SetSize(23);
+    mSaturn->SetSize(23);
 	mUranus->SetSize(19);
 	mNeptune->SetSize(18);
 	mPluto->SetSize(3);
 
 	mUniverseBackground = make_unique<UniverseBackground>(1000);
-	mAxes = make_unique<Axes>();
-	//mMercury = new Mercury();
-	//mVenus = new Venus();
-	//mEarth = new Earth();
-	//mMars = new Mars();
-	//mJupiter = new Jupiter();
-	//mSaturn = new Saturn();
-	//mUranus = new Uranus();
-	//mNeptune = new Neptune();
-	//mPluto = new Pluto();
+	//mAxes = make_unique<Axes>();
+	//orbitLane1 = make_unique<OrbitLanes>(65, 60);
 
 
 	mCamera = new Camera();
 
-	solarSystemPlanets = new Planets();
-	keyboardControl = new KeyBoardControl(solarSystemPlanets, mCamera);
+	//solarSystemPlanets = new Planets();
+keyboardControl = new KeyBoardControl(mCamera);
 
 	SetFPS(60);
 	// Initialize OpenGL graphics state

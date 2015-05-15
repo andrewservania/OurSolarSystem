@@ -22,12 +22,6 @@ Sun::Sun()
 	mSlices = 40;			//Default: 50 Earth specific
 	mStacks = 40;			//Default: 50 Earth specific
 
-	//DrawOrbit parameters:
-	mOrbitRadius = 0;		//Default: 50 Earth specific
-	mNumberOfPoints = 0;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.0f;    //Default: 1.0f TODO: Figure out this necessary Value!
-
 
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());

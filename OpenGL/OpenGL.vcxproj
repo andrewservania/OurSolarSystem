@@ -91,6 +91,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +105,9 @@
     <PostBuildEvent>
       <Message>Copy freeGlut DLL to Debug folder when debugging</Message>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -167,6 +171,7 @@
   <ItemGroup>
     <ClCompile Include="Axes.cpp" />
     <ClCompile Include="imageloader.cpp" />
+    <ClCompile Include="IRenderableObject.cpp" />
     <ClCompile Include="Jupiter.cpp" />
     <ClCompile Include="KeyBoardControl.cpp" />
     <ClCompile Include="main.cpp" />
@@ -187,6 +192,7 @@
   <ItemGroup>
     <ClInclude Include="Axes.h" />
     <ClInclude Include="imageloader.h" />
+    <ClInclude Include="IRenderableObject.h" />
     <ClInclude Include="Jupiter.h" />
     <ClInclude Include="KeyBoardControl.h" />
     <ClInclude Include="Mars.h" />
