@@ -5,10 +5,10 @@ Give it a try by downloading the ZIP file containing a executable file [here](ht
 NOTE: Look into the RELEASE folder to find the .exe. file.
 
 Controls:
-+ Press A to stop rotating
++ Press A to stop rotating.
 + Use your mouse wheel/touch pad scroll area to zoom in and out.
 + Use the LEFT and RIGHT arrows on your keyboard to rotate faster around the universe.
-+ Use the UP and DOWN arrows on your keyboard rise/ascent within the universe
++ Use the UP and DOWN arrows on your keyboard to rise/ascent within the universe
 + Press the ESC key to exit the program.
 
 ![Alt text](https://cloud.githubusercontent.com/assets/3042333/7442892/c533ba78-f124-11e4-9245-8e6d13114cf3.png "A couple of planets")
