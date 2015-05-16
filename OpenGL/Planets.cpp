@@ -2,6 +2,7 @@
 //Name: Andrew's Funky Finite 3D Solar System
 //Author: Andrew Servania
 
+//DEPRECATED CLASS!
 #include <iostream>
 #include "glut.h"
 #include "freeglut.h"

@@ -32,7 +32,7 @@ bool Planet::Render(){
 	glPushMatrix();
 	//glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 0);
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	glRotatef( -90.0f, 100.0f, 0.0f, 0.0f);
+	glRotatef( -90.0f, 1.0f, 0.0f, 0.0f);
 	CreateTexturedPlanet(mRadius, mSlices, mStacks);
 
 
@@ -98,7 +98,7 @@ void Planet::LoadPlanetImage(const char* fileName)
 	if (mIsImageLoaded == false)
 	{
 		glEnable(GL_DEPTH_TEST);
-//	    glEnable(GL_LIGHTING); powerfull lighting effect. Use it wisely!
+	   // glEnable(GL_LIGHTING); //powerful lighting effect. Use it wisely!
 		glEnable(GL_LIGHT0);
 		glEnable(GL_NORMALIZE);
 		glEnable(GL_COLOR_MATERIAL);

@@ -12,8 +12,8 @@ class Axes
 private:
 	bool mIsXBeingRendered , mIsYBeingRendered, mIsZBeingRendered;
 	bool mIsXGridBeingRendered, mIsYGridBeingRendered, mIsZGridBeingRendered;
-	int mLengthOfAxes;
-	int depth;
+	GLfloat mLengthOfAxes;
+	GLfloat depth;
 	int squareSizeInGrid;
 
 public:

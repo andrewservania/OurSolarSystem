@@ -59,10 +59,10 @@ bool Axes::RenderXAxisGrid()
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
 		glVertex3f(0.0f, 0.0f, 0.0f + i * squareSizeInGrid);
-		glVertex3f(depth, 0.0f, i * squareSizeInGrid);       
+		glVertex3f(depth, 0.0f, i * squareSizeInGrid + 0.0f);       
 
 	    glVertex3f(0.0f + i * squareSizeInGrid, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * squareSizeInGrid, 0.0f, depth);
+		glVertex3f(0.0f + i * squareSizeInGrid, 0.0f, depth + 0.0f);
 
 	}
 	glClearColor(0, 0, 0, 1);
@@ -70,7 +70,7 @@ bool Axes::RenderXAxisGrid()
 	for (int i = 0; i < depth; i++){
 
 		if ((i % 100) == 0){
-			drawText(to_string(i), i, 0, 0);
+			drawText(to_string(i), i + 0.0f, 0 + 0.0f, 0 + 0.0f);
 		}
 
 	}
@@ -96,7 +96,7 @@ bool Axes::RenderYAxisGrid()
 	for (int i = 0; i < depth; i++){
 
 		if ((i % 100) == 0){
-			drawText(to_string(i), 0, i, 0);
+			drawText(to_string(i), 0 + 0.0f, i + 0.0f, 0 + 0.0f);
 		}
 
 	}
@@ -112,7 +112,7 @@ bool Axes::RenderZAxisGrid()
 	for (int i = 0; i <= mLengthOfAxes; i++){
 
 		glVertex3f(0.0f,0.0f + i * squareSizeInGrid, 0.0f);
-		glVertex3f(0.0f, 0.0f + i * squareSizeInGrid, depth);
+		glVertex3f(0.0f, 0.0f + i * squareSizeInGrid, depth + 0.0f);
 
 		glVertex3f(0.0f, 0.0f, 0.0f + i * squareSizeInGrid);
 		glVertex3f(0.0f, depth, 0.0f + i * squareSizeInGrid);
@@ -123,7 +123,7 @@ bool Axes::RenderZAxisGrid()
 	for (int i = 0; i < depth; i++){
 
 		if ((i % 100)==0 ){
-			drawText(to_string(i), 0, 0, i);
+			drawText(to_string(i), 0.0f, 0.0f, i + 0.0f);
 		}
 		
 	}

@@ -33,3 +33,26 @@ Pluto::Pluto()
 Pluto::~Pluto()
 {
 }
+
+bool Pluto::Render()
+{
+	glPushMatrix();
+	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
+	sunOrbitAngle += 0.1f;
+
+	glPushMatrix();
+
+	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // Default angle of a planet. If you don't want the planet's texture to look upside down, keep this one as it is.
+
+
+	glRotatef(planetOrbitAngle, 0.0f, 0.0f, 1.0f);
+	planetOrbitAngle += 0.1f;
+	CreateTexturedPlanet(mRadius, mSlices, mStacks);
+
+
+	glPopMatrix();
+	glPopMatrix();
+	return mRenderStatus;
+}

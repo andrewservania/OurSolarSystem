@@ -6,9 +6,13 @@ UniverseBackground::UniverseBackground(int _radius)
 	radius = _radius;
 	fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 	mQuad = gluNewQuadric();
-	Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str());
+	//Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str()); //Defualt
+	Image* image = loadBMP((fileLocationOfUniverses + "hubble1.bmp").c_str()); 
+
 	mTextureId = LoadTexture(image);
 	 delete image;
+	 
+	 glEnable(GL_TEXTURE_2D);
 }
 
 UniverseBackground::~UniverseBackground()
@@ -20,7 +24,7 @@ bool UniverseBackground::Render()
 {
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glEnable(GL_TEXTURE_2D);
+	
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
 	gluQuadricTexture(mQuad, 1);
 	gluSphere(mQuad, radius, 100, 100);

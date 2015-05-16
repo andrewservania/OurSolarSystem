@@ -24,13 +24,11 @@
 #include "Sun.h"
 #include "UniverseBackground.h"
 #include "Axes.h"
+#include "OrbitLane.h"
 
 using namespace std;
 
-const int mScreenWidth  = 1366;
-const int mScreenHeight = 768;
-const int mColorDepth   = 32;
-const int mRefreshRate  = 60;
+
 
 int FPS = 60; //Default value: 60
 
@@ -46,8 +44,8 @@ GLUquadric *quad;
 KeyBoardControl*keyboardControl;
 string fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 
-float mCameraRearDistance = -2000;
-float mCameraFrontDistance = 2000;
+float mCameraRearDistance =  100;
+float mCameraFrontDistance = 970;
 
 Camera* mCamera;
 
@@ -61,9 +59,19 @@ unique_ptr<Saturn> mSaturn;
 unique_ptr<Uranus> mUranus;
 unique_ptr<Neptune> mNeptune;
 unique_ptr<Pluto> mPluto;
-
 unique_ptr<UniverseBackground> mUniverseBackground;
-//unique_ptr<Axes> mAxes;
+
+//Planet lanes
+unique_ptr<OrbitLane> mOrbitLane1;
+unique_ptr<OrbitLane> mOrbitLane2;
+unique_ptr<OrbitLane> mOrbitLane3;
+unique_ptr<OrbitLane> mOrbitLane4;
+unique_ptr<OrbitLane> mOrbitLane5;
+unique_ptr<OrbitLane> mOrbitLane6;
+unique_ptr<OrbitLane> mOrbitLane7;
+unique_ptr<OrbitLane> mOrbitLane8;
+unique_ptr<OrbitLane> mOrbitLane9;
+
 
 
 string fontFilename = "...\\OpenGL\\Resources\\Fonts\\";
@@ -133,6 +141,7 @@ void Render(void)
 
 
 	mUniverseBackground->Render();
+	
 	mSun->Render();
 	mMercury->Render();
 	mVenus->Render();
@@ -143,12 +152,22 @@ void Render(void)
 	mUranus->Render();
 	mNeptune->Render();
 	mPluto->Render();
-	////mAxes->RenderXAxisGrid();
- //   //mAxes->RenderYAxisGrid();
-	////mAxes->RenderZAxisGrid();
 
-	//mPluto->Render();
+	mOrbitLane1->Render(100);
+	mOrbitLane2->Render(200);
+	mOrbitLane3->Render(300);
+	mOrbitLane4->Render(400);
+	mOrbitLane5->Render(500);
+	mOrbitLane6->Render(600);
+	mOrbitLane7->Render(700);
+	mOrbitLane8->Render(800);
+	mOrbitLane9->Render(900);
 
+
+
+	//mAxes->RenderXAxisGrid();
+    //mAxes->RenderYAxisGrid();
+	//mAxes->RenderZAxisGrid();
 
 	//glLoadIdentity();
 
@@ -206,13 +225,13 @@ void mouseWheel(int button, int dir, int x, int y)
 	if (dir > 0)
 	{
 		// Rotate Up
-		mCamera->camC += 8.0f;					// Forward
+		mCamera->camC -= 8.0f;					// Forward
 		cout << mCamera->camC << "      \r";
 	}
 	else
 	{
 		// Rotate Down
-		mCamera->camC -= 8.0f;					// Back up
+		mCamera->camC += 8.0f;					// Back up
 		cout << mCamera->camC << "      \r";
 	} 
 }
@@ -234,11 +253,12 @@ void IdleFunc(void)
 	if (mCamera->camA <= mCameraRearDistance)
 		mCamera->camA = mCameraRearDistance;
 
-	if (mCamera->camB >= mCameraFrontDistance)
-		mCamera->camB = mCameraFrontDistance;
+	//Vertical checking
+	//if (mCamera->camB >= mCameraFrontDistance)
+	//	mCamera->camB = mCameraFrontDistance;
 
-	if (mCamera->camB <= mCameraRearDistance)
-		mCamera->camB = mCameraRearDistance;
+	//if (mCamera->camB <= mCameraRearDistance)
+	//	mCamera->camB = mCameraRearDistance;
 
 	if (mCamera->camC >= mCameraFrontDistance)
 		mCamera->camC = mCameraFrontDistance;
@@ -362,27 +382,6 @@ void KeyboardFunc(unsigned char key, int x, int y)
 	keyboardControl->ListenToKeys(key, x, y);
 }
 
-void ToggleFullScreen(bool isFullscreen)
-{
-	if (isFullscreen == true)
-	{
-		/* resolutionResolutionSetting example ("1920x1080:32@60"); */
-		const char* screenResolutionSetting = to_string(mScreenWidth + mScreenHeight + ':' + mColorDepth + '@' + mRefreshRate).c_str();
-
-		glutGameModeString(screenResolutionSetting); //the settings for full screen mode
-		glutEnterGameMode(); //set glut to full screen using the settings in the line above
-	}
-
-	else
-	{
-		// These three functions HAVE to follow this order!
-		// Otherwise you will BREAK the window!
-		glutInitWindowSize(1200, 700);
-		glutCreateWindow("Andrew's Funky 3D Finite Solar System");
-		glutPositionWindow(60, 10);
-	}
-
-}
 
 void arrowPadInput(int key, int x, int y){
 	switch (key){
@@ -411,14 +410,19 @@ void arrowPadInput(int key, int x, int y){
 
 int main(int argc, char* argv[])
 {
+	cout << "Loading...\n";
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+	
+	mCamera = new Camera();
 
 	//solarSystemPlanets = new Planets();
-	ToggleFullScreen(false);
+	keyboardControl = new KeyBoardControl(mCamera);
 
-
+	//glEnable(GL_LIGHTING);
+	keyboardControl->ToggleFullScreen(false);
 	//Advanced experiment. Smart Pointers
+	mUniverseBackground = make_unique<UniverseBackground>(1000);
 	mSun = make_unique<Sun>();
 	mMercury = make_unique<Mercury>();
 	mVenus = make_unique<Venus>();
@@ -443,23 +447,28 @@ int main(int argc, char* argv[])
 
 	mMercury->SetSize(5);
 	mVenus->SetSize(6);
-	mEarth->SetSize(20);
+	mEarth->SetSize(40);
 	mMars->SetSize(10);
 	mJupiter->SetSize(27);
-    mSaturn->SetSize(23);
+	mSaturn->SetSize(23);
 	mUranus->SetSize(19);
 	mNeptune->SetSize(18);
 	mPluto->SetSize(3);
 
-	mUniverseBackground = make_unique<UniverseBackground>(1000);
 	//mAxes = make_unique<Axes>();
-	//orbitLane1 = make_unique<OrbitLanes>(65, 60);
+	
+	mOrbitLane1 = make_unique<OrbitLane>();
+	mOrbitLane2 = make_unique<OrbitLane>();
+	mOrbitLane3 = make_unique<OrbitLane>();
+	mOrbitLane4 = make_unique<OrbitLane>();
+	mOrbitLane5 = make_unique<OrbitLane>();
+	mOrbitLane6 = make_unique<OrbitLane>();
+	mOrbitLane7 = make_unique<OrbitLane>();
+	mOrbitLane8 = make_unique<OrbitLane>();
+	mOrbitLane9 = make_unique<OrbitLane>();
 
 
-	mCamera = new Camera();
 
-	//solarSystemPlanets = new Planets();
-keyboardControl = new KeyBoardControl(mCamera);
 
 	SetFPS(60);
 	// Initialize OpenGL graphics state
@@ -475,7 +484,7 @@ keyboardControl = new KeyBoardControl(mCamera);
 	glutIdleFunc(IdleFunc);
 	glutSpecialFunc(arrowPadInput);
 
-
+	cout << "Done.\n";
 	// Turn the flow of control over to GLUT
 	glutMainLoop();
 

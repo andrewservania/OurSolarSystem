@@ -30,6 +30,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -43,6 +44,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -142,7 +144,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL\freeglut\lib;$(SolutionDir)\OpenGL\glut-3.7.6-bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /E /Y "$(ProjectDir)DLLs" "$(SolutionDir)Release"</Command>
@@ -178,6 +180,7 @@
     <ClCompile Include="Mars.cpp" />
     <ClCompile Include="Mercury.cpp" />
     <ClCompile Include="Neptune.cpp" />
+    <ClCompile Include="OrbitLane.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Earth.cpp" />
     <ClCompile Include="Planets.cpp" />
@@ -198,6 +201,7 @@
     <ClInclude Include="Mars.h" />
     <ClInclude Include="Mercury.h" />
     <ClInclude Include="Neptune.h" />
+    <ClInclude Include="OrbitLane.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Earth.h" />
     <ClInclude Include="Planets.h" />

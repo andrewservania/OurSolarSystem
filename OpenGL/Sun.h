@@ -3,8 +3,12 @@
 class Sun :
 	public Planet
 {
+private:
+	GLfloat planetOrbitAngle = 0.0f;
+	
 public:
 	Sun();
 	~Sun();
+	bool Render() override;
 };
 

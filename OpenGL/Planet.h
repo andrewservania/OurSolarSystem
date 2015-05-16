@@ -51,7 +51,8 @@ public:
 	Planet();
 	~Planet();
 	
-	bool virtual Render();
+	bool virtual Render(); //virtual in order to make it override-able. Meaning, you can have a Render() function with specific code for every planet object that you create.
+	//OTHER the created planet will just use the code implemented in the render() function of Planet.cpp
 	GLuint LoadPlanetTexture(Image* image);
 	void LoadPlanetImage(const char* fileName);
 	void CreateTexturedPlanet(GLfloat radius, int slices, int stacks);

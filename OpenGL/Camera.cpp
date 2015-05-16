@@ -10,10 +10,10 @@ Camera::Camera()
 	 // camC = -60;
 
 	 camA = 0;
-	 camB = 30;
-	 camC = -336;
+	 camB = 80;
+	 camC = 336;
 
-	  cameraViewAngle = -10.0f;
+	  cameraViewAngle = 10.0f;
 	  universeLoaded = false;
 
 	  animate = true;
