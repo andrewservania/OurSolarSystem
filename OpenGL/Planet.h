@@ -46,8 +46,6 @@ protected:
 		GLfloat zPosition;
 	} mPlanetCoordinates;
 
-
-
 public:
 	Planet();
 	~Planet();
@@ -56,7 +54,7 @@ public:
 	GLuint LoadPlanetTexture(Image* image);
 	void LoadPlanetImage(const char* fileName);
 	void CreateTexturedPlanet(GLfloat radius, int slices, int stacks);
-	void DrawOrbit(GLfloat radius, int numPoints,bool visible, GLfloat customV);
+	void DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat customV);
 
 	//*Standard Planet getters*/
 	GLfloat GetX();
@@ -71,9 +69,7 @@ public:
 	void SetY(GLfloat value);
 	void SetZ(GLfloat value);
 
-	void SetPosition(GLfloat x, GLfloat y, GLfloat z );
+	void SetPosition(GLfloat x, GLfloat y, GLfloat z);
 	void SetPosition(PlanetCoordinates planetCoordinates);
 	void SetSize(GLfloat radius);
-
 };
-

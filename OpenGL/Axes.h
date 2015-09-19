@@ -5,19 +5,17 @@
 #include <string>
 using namespace std;
 
-
-
 class Axes
 {
 private:
-	bool mIsXBeingRendered , mIsYBeingRendered, mIsZBeingRendered;
+	bool mIsXBeingRendered, mIsYBeingRendered, mIsZBeingRendered;
 	bool mIsXGridBeingRendered, mIsYGridBeingRendered, mIsZGridBeingRendered;
 	int mLengthOfAxes;
 	int depth;
 public:
 	Axes();
 	~Axes();
-	
+
 	bool RenderXAxis();
 	bool RenderYAxis();
 	bool RenderZAxis();
@@ -26,6 +24,4 @@ public:
 	bool RenderYAxisGrid();
 	bool RenderZAxisGrid();
 	void drawText(string text, float x, float y, float z);
-
 };
-

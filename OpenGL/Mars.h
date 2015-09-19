@@ -7,4 +7,3 @@ public:
 	Mars();
 	~Mars();
 };
-

@@ -7,4 +7,3 @@ public:
 	Jupiter();
 	~Jupiter();
 };
-

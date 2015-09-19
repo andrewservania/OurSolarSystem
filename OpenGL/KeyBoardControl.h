@@ -2,7 +2,6 @@
 #include "Planets.h"
 #include "Camera.h"
 
-
 class KeyBoardControl
 {
 public:
@@ -10,8 +9,7 @@ public:
 	Camera* mCamera;
 
 	KeyBoardControl();
-	KeyBoardControl(Planets* planets, Camera* camera);	
+	KeyBoardControl(Planets* planets, Camera* camera);
 	~KeyBoardControl();
 	void ListenToKeys(unsigned char key, int x, int y);
 };
-

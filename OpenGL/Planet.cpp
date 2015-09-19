@@ -1,6 +1,5 @@
 #include "Planet.h"
 
-
 Planet::Planet()
 {
 	mRenderStatus = false;
@@ -13,28 +12,22 @@ Planet::Planet()
 	mCustomValue = 0.0f;
 	mSolarSystemRotation = 0;
 	//glColor4f(0.0f, 0.0f, 0.0f, 0.0f);
-	
 }
 
 Planet::~Planet()
 {
-
 }
-
-
 
 /*Standard render function for all planets.
  All planets get this standard function through inheritance
  Make sure all necessary variables are initialized accordingly
  within the constructor of a planet*/
 bool Planet::Render(){
-
 	glPushMatrix();
 	//glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 0);
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	glRotatef( -90.0f, 100.0f, 0.0f, 0.0f);
+	glRotatef(-90.0f, 100.0f, 0.0f, 0.0f);
 	CreateTexturedPlanet(mRadius, mSlices, mStacks);
-
 
 	glPopMatrix();
 	if (mShowOrbitalLanes == true){
@@ -51,13 +44,10 @@ void Planet::SetVisibility(bool visibility)
 /*Standard Orbit drawing function for all planets*/
 void Planet::DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat customV)
 {
-
 	double PI = 3.1415926535897f;
-
 
 	glBegin(GL_LINE_STRIP);
 
-	
 	//Standard gray-white color
 	glColor4f(1.0f + mColorValue + customV, 1.0f +
 		mColorValue + customV, 1.0f +
@@ -81,7 +71,7 @@ GLuint Planet::LoadPlanetTexture(Image* image)
 	GLuint textureId;
 	glGenTextures(1, &textureId);				//Make room for our texture
 	glBindTexture(GL_TEXTURE_2D, textureId);	//Tell OpenGL which texture to edit
-												//Map the image to the texture
+	//Map the image to the texture
 	glTexImage2D(GL_TEXTURE_2D,                 //Always GL_TEXTURE_2D
 		0,										//0 for now
 		GL_RGB,									//Format OpenGL uses for image
@@ -89,7 +79,7 @@ GLuint Planet::LoadPlanetTexture(Image* image)
 		0,										//The border of the image
 		GL_RGB,									//GL_RGB, because pixels are stored in RGB format
 		GL_UNSIGNED_BYTE,						//GL_UNSIGNED_BYTE, because pixels are stored
-												//as unsigned numbers
+		//as unsigned numbers
 		image->pixels);							//The actual pixel data
 
 	return textureId; //Returns the id of the texture
@@ -100,7 +90,7 @@ void Planet::LoadPlanetImage(const char* fileName)
 	if (mIsImageLoaded == false)
 	{
 		glEnable(GL_DEPTH_TEST);
-	  //glEnable(GL_LIGHTING);
+		//glEnable(GL_LIGHTING);
 		glEnable(GL_LIGHT0);
 		glEnable(GL_NORMALIZE);
 		glEnable(GL_COLOR_MATERIAL);
@@ -126,7 +116,6 @@ void Planet::CreateTexturedPlanet(GLfloat radius, int slices, int stacks)
 	gluSphere(mQuadPlanet, radius, slices, stacks);
 }
 
-
 GLfloat Planet::GetX()
 {
 	return mPlanetCoordinates.xPosition;
@@ -147,7 +136,6 @@ Planet::PlanetCoordinates Planet::GetPosition()
 	return mPlanetCoordinates;
 }
 
-
 void Planet::SetX(GLfloat value)
 {
 	mPlanetCoordinates.xPosition = value;
@@ -166,7 +154,6 @@ void Planet::SetZ(GLfloat value)
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
 }
 
-
 void Planet::SetPosition(GLfloat x, GLfloat y, GLfloat z)
 {
 	mPlanetCoordinates.xPosition = x;
@@ -179,7 +166,6 @@ void Planet::SetPosition(PlanetCoordinates planetCoordinates)
 	mPlanetCoordinates = planetCoordinates;
 }
 
-
 GLfloat Planet::GetSize()
 {
 	return mRadius;
@@ -188,7 +174,5 @@ GLfloat Planet::GetSize()
 void Planet::SetSize(GLfloat radius)
 {
 	mRadius = radius;
-	mOrbitRadius = mRadius*4;
+	mOrbitRadius = mRadius * 4;
 }
-
-

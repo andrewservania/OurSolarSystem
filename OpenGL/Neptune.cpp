@@ -1,6 +1,5 @@
 #include "Neptune.h"
 
-
 Neptune::Neptune()
 {
 	mUnknownRotationValue = 9;
@@ -10,8 +9,6 @@ Neptune::Neptune()
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Mercury specific
 
 	//glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	
-
 
 	glColor3f(0.6f, 0.5f, 0.7f);
 	mPlanetTextureFileName = "texture_neptune.bmp";
@@ -29,7 +26,6 @@ Neptune::Neptune()
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
-
 
 Neptune::~Neptune()
 {

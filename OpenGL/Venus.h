@@ -7,4 +7,3 @@ public:
 	Venus();
 	~Venus();
 };
-

@@ -28,13 +28,12 @@
 #include "UniverseBackground.h"
 #include "Axes.h"
 
-
 using namespace std;
 
-const int mScreenWidth  = 1366;
+const int mScreenWidth = 1366;
 const int mScreenHeight = 768;
-const int mColorDepth   = 32;
-const int mRefreshRate  = 60;
+const int mColorDepth = 32;
+const int mRefreshRate = 60;
 
 int FPS = 60; //Default value: 60
 
@@ -65,20 +64,13 @@ unique_ptr<Saturn> mSaturn;
 unique_ptr<Uranus> mUranus;
 unique_ptr<Neptune> mNeptune;
 unique_ptr<Pluto> mPluto;
-
 unique_ptr<UniverseBackground> mUniverseBackground;
 unique_ptr<Axes> mAxes;
-
-
-
-
-
 
 string fontFilename = "...\\OpenGL\\Resources\\Fonts\\";
 string fontName = "FreeSerif.ttf";
 
-
-void drawText(string text,float x,float y,float z){
+void drawText(string text, float x, float y, float z){
 	//glMatrixMode(GL_PROJECTION);
 	//glPushMatrix();
 	//glLoadIdentity();
@@ -89,10 +81,10 @@ void drawText(string text,float x,float y,float z){
 	//glLoadIdentity();
 
 	glColor3f(0.0, 1.0, 0.0); // Green
-	
+
 	//glRasterPos3f(x, y, z);
 	glRasterPos3f(-mCamera->camA, mCamera->camB, mCamera->camC);
-	
+
 	//glRasterPos2f(x, y);
 	void * font = GLUT_BITMAP_9_BY_15;
 	for (string::iterator i = text.begin(); i != text.end(); ++i)
@@ -107,9 +99,7 @@ void drawText(string text,float x,float y,float z){
 	//glPopMatrix();
 }
 
-
 void SetFPS(int framesPerSecond){
-
 	FPS = framesPerSecond;
 }
 
@@ -117,28 +107,23 @@ void renderAccordingToFPS(){
 	Sleep(1000 / FPS);
 }
 
-
-
 //Display is called continuously. So this is your graphics loop.
 void Render(void)
 {
-	
-	
 	//// The following line empties the buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	glLoadIdentity();
 
-	gluLookAt( mCamera->camA,  mCamera->camB,   -mCamera->camC,		//eye
-			   mCamera->camA,  mCamera->camB,    mCamera->camC,		//center
-			   0,			   1,				0);
+	gluLookAt(mCamera->camA, mCamera->camB, -mCamera->camC,		//eye
+		mCamera->camA, mCamera->camB, mCamera->camC,		//center
+		0, 1, 0);
 
 	glRotatef(mCamera->cameraViewAngle, 0.0, 10.0, 0.0);
-	
+
 	glPushMatrix();
 	glLineWidth(2.0);						// Width of ALL Lines in the 3D environment
 	glPopMatrix();
-
 
 	mUniverseBackground->Render();
 
@@ -158,8 +143,6 @@ void Render(void)
 
 	mPluto->Render();
 
-
-
 	//glLoadIdentity();
 
 	glutSwapBuffers();
@@ -177,7 +160,6 @@ void Reshape(GLint width, GLint height)
 
 void InitGraphics(void)
 {
-
 	//glEnable(GL_DEPTH_TEST);
 
 	////	glEnable(GL_LIGHTING);
@@ -199,20 +181,15 @@ void InitGraphics(void)
 	//delete image;
 
 	//solarSystemPlanets = new Planets();
-
 }
-
 
 void MouseButton(int button, int state, int x, int y)
 {
-
-
 }
 
 //mouseWheel ZoomIn ZoomOut
 void mouseWheel(int button, int dir, int x, int y)
 {
-
 	if (dir > 0)
 	{
 		// Rotate Up
@@ -224,12 +201,11 @@ void mouseWheel(int button, int dir, int x, int y)
 		// Rotate Down
 		mCamera->camC -= 8.0f;					// Back up
 		cout << mCamera->camC << "      \r";
-	} 
+	}
 }
 
 void MouseMotion(int x, int y)
 {
-
 }
 
 void IdleFunc(void)
@@ -270,7 +246,7 @@ void IdleFunc(void)
 	if (mCamera->animate == true)
 	{
 		solarSystemRotation += 1.0f;
-	mCamera->cameraViewAngle -= 0.05f;
+		mCamera->cameraViewAngle -= 0.05f;
 	}
 	//Gradual Camera Reset///////////
 	while (mCamera->resetView == true)
@@ -283,7 +259,6 @@ void IdleFunc(void)
 			{
 				mCamera->camA = 20;
 			}
-
 		}
 		if (mCamera->camA < 20)
 		{
@@ -296,7 +271,7 @@ void IdleFunc(void)
 		}
 
 		////////////////////////////////////////////
-		if (mCamera->camB <-60)
+		if (mCamera->camB < -60)
 		{
 			mCamera->camB = mCamera->camB += 1;
 
@@ -304,9 +279,8 @@ void IdleFunc(void)
 			{
 				mCamera->camB = -60;
 			}
-
 		}
-		if (mCamera->camB >-60)
+		if (mCamera->camB > -60)
 		{
 			mCamera->camB = mCamera->camB -= 1;
 			if (mCamera->camB == -60)
@@ -315,14 +289,13 @@ void IdleFunc(void)
 			}
 		}
 		////////////////////////////////////////////
-		if (mCamera->camC <-5)
+		if (mCamera->camC < -5)
 		{
 			mCamera->camC = mCamera->camC += 1;
 			if (mCamera->camC == -5)
 			{
 				mCamera->camC = -5;
 			}
-
 		}
 		if (mCamera->camC > -5)
 		{
@@ -333,16 +306,15 @@ void IdleFunc(void)
 			}
 		}
 		////////////////////////////////////////////
-		if (aaa <-20)
+		if (aaa < -20)
 		{
 			aaa = aaa += 1;
 			if (aaa == -20)
 			{
 				aaa = -20;
 			}
-
 		}
-		if (aaa >-20)
+		if (aaa > -20)
 		{
 			aaa = aaa -= 1;
 			if (aaa == -20)
@@ -350,11 +322,11 @@ void IdleFunc(void)
 				aaa = -20;
 			}
 		}
-		//////////////////////////////////////////	
+		//////////////////////////////////////////
 
-		if (mCamera->camA == 20 
-			&& mCamera->camB == -60 
-			&& mCamera->camC == -5 
+		if (mCamera->camA == 20
+			&& mCamera->camB == -60
+			&& mCamera->camC == -5
 			&& aaa == -20)
 		{
 			mCamera->resetView = false;
@@ -364,7 +336,6 @@ void IdleFunc(void)
 	//TODO: Adapt! This method does alot related to lighting!:
 	//letThereBeLight();
 	//glutPostRedisplay();
-
 }
 
 void KeyboardFunc(unsigned char key, int x, int y)
@@ -391,14 +362,13 @@ void ToggleFullScreen(bool isFullscreen)
 		glutCreateWindow("Andrew's Funky 3D Finite Solar System");
 		glutPositionWindow(60, 10);
 	}
-
 }
 
 void arrowPadInput(int key, int x, int y){
 	switch (key){
-	case GLUT_KEY_UP :
+	case GLUT_KEY_UP:
 		//do something here
-		mCamera->camB+=10;
+		mCamera->camB += 10;
 		break;
 	case GLUT_KEY_DOWN:
 		//do something here
@@ -427,12 +397,11 @@ int main(int argc, char* argv[])
 	//solarSystemPlanets = new Planets();
 	ToggleFullScreen(false);
 
-
 	//Advanced experiment. Smart Pointers
 	mSun = make_unique<Sun>();
 	mMercury = make_unique<Mercury>();
 	mVenus = make_unique<Venus>();
-	mEarth  = make_unique<Earth>();
+	mEarth = make_unique<Earth>();
 	mMars = make_unique<Mars>();
 	mJupiter = make_unique<Jupiter>();
 	mSaturn = make_unique<Saturn>();
@@ -440,7 +409,6 @@ int main(int argc, char* argv[])
 	mNeptune = make_unique<Neptune>();
 	mPluto = make_unique<Pluto>();
 
-	
 	mMercury->SetPosition(100, 0, 0);
 	mVenus->SetPosition(200, 0, 0);
 	mEarth->SetPosition(300, 0, 0);
@@ -473,7 +441,6 @@ int main(int argc, char* argv[])
 	//mNeptune = new Neptune();
 	//mPluto = new Pluto();
 
-
 	mCamera = new Camera();
 
 	solarSystemPlanets = new Planets();
@@ -493,10 +460,8 @@ int main(int argc, char* argv[])
 	glutIdleFunc(IdleFunc);
 	glutSpecialFunc(arrowPadInput);
 
-
 	// Turn the flow of control over to GLUT
 	glutMainLoop();
 
 	return 0;
 }
-

@@ -1,55 +1,49 @@
-#pragma once 
+#pragma once
 #include "glut.h"
 #include <string>
 
 using namespace std;
 
-	class Planets
-	{
+class Planets
+{
+public:
+	bool showOrbitalLanes;
+	float colorValue2;
+	bool visibility2;
+	bool imageLoaded;
 
-	public :
-		bool showOrbitalLanes;
-		float colorValue2;
-		bool visibility2;
-		bool imageLoaded;
+	GLuint _textureIdPlanet; //The id of the texture
+	GLUquadric *quadPlanet;
 
-		GLuint _textureIdPlanet; //The id of the texture
-		GLUquadric *quadPlanet;
+	//TODO:Are these variables used? I don't thinks so. Find out
+	GLuint _textureId; //The id of the texture
+	GLUquadric *quad;
+	string fileLocationOfPlanets;
 
+	Planets();
+	~Planets();
 
-		//TODO:Are these variables used? I don't thinks so. Find out
-		GLuint _textureId; //The id of the texture
-		GLUquadric *quad;
-		 string fileLocationOfPlanets;
+	void drawOrbit(float Radius, int numPoints, bool visible, float customV);
 
-		Planets();
-		~Planets();
+	void CreateMercury(float solarSystemRotation);
 
-		 void drawOrbit(float Radius, int numPoints, bool visible, float customV);
+	void CreateVenus(float solarSystemRotation);
 
-		 void CreateMercury(float solarSystemRotation);
+	void CreatePlanetEarth(float solarSystemRotation);
 
-		 void CreateVenus(float solarSystemRotation);
+	void CreateMars(float solarSystemRotation);
 
-		 void CreatePlanetEarth(float solarSystemRotation);
+	void CreateJupiter(float solarSystemRotation);
 
-		 void CreateMars(float solarSystemRotation);
+	void CreateSaturn(float solarSystemRotation);
 
-		 void CreateJupiter(float solarSystemRotation);
+	void CreateUranus(float solarSystemRotation);
 
-		 void CreateSaturn(float solarSystemRotation);
+	void CreateNeptunus(float solarSystemRotation);
 
-		 void CreateUranus(float solarSystemRotation);
+	void CreatePluto(float solarSystemRotation);
 
-		 void CreateNeptunus(float solarSystemRotation);
+	void LoadPlanetImages(const char* fileName);
 
-		 void CreatePluto(float solarSystemRotation);
-
-		 void LoadPlanetImages(const char* fileName);
-	
-		 void createTexturedPlanet(string planetImageLocation,int radius, int slices, int stacks);
-
-	
-	
-	};
-
+	void createTexturedPlanet(string planetImageLocation, int radius, int slices, int stacks);
+};

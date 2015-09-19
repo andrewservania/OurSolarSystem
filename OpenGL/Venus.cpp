@@ -1,9 +1,7 @@
 #include "Venus.h"
 
-
 Venus::Venus()
 {
-
 	mUnknownRotationValue = 3;
 
 	mPlanetCoordinates.xPosition = 40; //Default: 40 Venus specific
@@ -11,7 +9,7 @@ Venus::Venus()
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Mercury specific
 
 	//glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	
+
 	//glColor3f(0.7f, 0.6f, 0.0f); //brown
 	mPlanetTextureFileName = "texture_venus.bmp";
 
@@ -27,11 +25,7 @@ Venus::Venus()
 	mCustomValue = 0.9f;    //Default: 1.0f TODO: Figure out this necessary Value!
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
-
-
-
 }
-
 
 Venus::~Venus()
 {

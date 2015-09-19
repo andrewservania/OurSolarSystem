@@ -1,6 +1,5 @@
 #include "Jupiter.h"
 
-
 Jupiter::Jupiter()
 {
 	//glPushMatrix();
@@ -10,8 +9,6 @@ Jupiter::Jupiter()
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Mercury specific
 
 	//glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	
-
 
 	glColor3f(0.4f, 0.3f, 0.2f); //lime green
 	mPlanetTextureFileName = "texture_jupiter.bmp";
@@ -29,7 +26,6 @@ Jupiter::Jupiter()
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
-
 
 Jupiter::~Jupiter()
 {

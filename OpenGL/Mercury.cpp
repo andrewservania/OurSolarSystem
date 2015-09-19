@@ -1,11 +1,8 @@
 #include "Mercury.h"
 
-
 Mercury::Mercury()
 {
-	
 	mUnknownRotationValue = 2;
-	
 
 	mPlanetCoordinates.xPosition = 25; //Default: 25 Mercury specific
 	mPlanetCoordinates.yPosition = 0;  //Default: 0 Mercury specific
@@ -28,10 +25,7 @@ Mercury::Mercury()
 	mCustomValue = 1.0f;    //Default: 1.0f TODO: Figure out this necessary Value!
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
-
-
 }
-
 
 Mercury::~Mercury()
 {

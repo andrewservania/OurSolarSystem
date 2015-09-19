@@ -1,10 +1,8 @@
 #include "Sun.h"
 
-
 Sun::Sun()
 {
 	//glColor3f(1.0f, 1.0f, 0.0f);
-
 
 	mUnknownRotationValue = 3;
 
@@ -28,12 +26,8 @@ Sun::Sun()
 	/*including mVisibilty*/
 	mCustomValue = 0.0f;    //Default: 1.0f TODO: Figure out this necessary Value!
 
-
-
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
-
 }
-
 
 Sun::~Sun()
 {

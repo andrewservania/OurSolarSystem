@@ -12,8 +12,6 @@
 
 using namespace std;
 
-
-
 Planets::Planets()
 {
 	showOrbitalLanes = true;
@@ -24,11 +22,9 @@ Planets::Planets()
 }
 Planets::~Planets()
 {
-
 }
 
 GLuint loadTexturePlanet(Image* image) {
-
 	GLuint textureId;
 
 	glGenTextures(1, &textureId); //Make room for our texture
@@ -56,12 +52,10 @@ GLuint loadTexturePlanet(Image* image) {
 		image->pixels);               //The actual pixel data
 
 	return textureId; //Returns the id of the texture
-
 }
 
 void Planets::drawOrbit(GLfloat Radius, int numPoints, bool visible, float customV)
 {
-		
 	double PI = 3.1415926535897f;
 	glBegin(GL_LINE_STRIP);
 
@@ -70,7 +64,7 @@ void Planets::drawOrbit(GLfloat Radius, int numPoints, bool visible, float custo
 		colorValue2 + customV, 1.0f +
 		colorValue2 + customV, 0.0f +
 		colorValue2 + customV);
-//	float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+	//	float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 	//glColor3f(r, r, r);
 	for (int i = 0; i < numPoints; i++)
 	{
@@ -86,7 +80,7 @@ void Planets::drawOrbit(GLfloat Radius, int numPoints, bool visible, float custo
 //Done
 void Planets::CreateMercury(float solarSystemRotation)
 {
-	glPushMatrix();	
+	glPushMatrix();
 	glRotatef(solarSystemRotation / 2, 0, 0, 1); // rotate on the ... axis
 	glTranslatef(25, 0, 0); // The distance from the origin!! Or better said.. From the sun :)
 	glColor3f(0.0f, 1.0f, 0.0f); //green
@@ -97,7 +91,6 @@ void Planets::CreateMercury(float solarSystemRotation)
 	{
 		drawOrbit(25, 60, visibility2, 1.0f);
 	}
-		
 }
 
 //Done
@@ -128,8 +121,8 @@ void Planets::CreatePlanetEarth(float solarSystemRotation)
 	glTranslatef(50, 0, 0); // The distance from the origin!! Or better said.. From the sun :)
 	//glColor3f(0.0f, 0.0f, 1.0f); //blue
 
-	createTexturedPlanet("Earth.bmp",8,50,50);
-	
+	createTexturedPlanet("Earth.bmp", 8, 50, 50);
+
 	//glutSolidSphere(4, 20, 10);
 
 	glPopMatrix();
@@ -138,7 +131,6 @@ void Planets::CreatePlanetEarth(float solarSystemRotation)
 		drawOrbit(50, 60, visibility2, 0.8f);
 	}
 	/////////////////////////////////////////////////////////////////////
-
 }
 
 //Done
@@ -176,7 +168,6 @@ void Planets::CreateJupiter(float solarSystemRotation)
 		drawOrbit(75, 60, visibility2, 0.6f);
 	}
 	//////////////////////////////////////////////////////////////////////
-
 }
 
 //Done
@@ -212,7 +203,6 @@ void Planets::CreateSaturn(float solarSystemRotation)
 	//
 	// Circles coming soon!! :D :D
 	//////////////////////////////////////////////////////////////////////
-
 }
 
 //Done
@@ -254,19 +244,16 @@ void Planets::CreateNeptunus(float solarSystemRotation)
 		drawOrbit(140, 60, visibility2, 0.3f);
 	}
 	//////////////////////////////////////////////////////////////////////
-
 }
-
 
 void Planets::CreatePluto(float solarSystemRotation)
 {
 	//////////////////////Pluto///////////////////////////////////////////
 	//glRotatef(17, 1, 0, 0); Woa! This method causes alot of trouble here!
-	glPushMatrix(); 
+	glPushMatrix();
 	glRotatef(17, 1, 0, 0); // The precise scientifical angle of Pluto's orbit. 17 degrees
 	if (showOrbitalLanes == true)
 	{
-			
 		drawOrbit(160, 60, visibility2, 0.2f);
 	}
 	glRotatef(solarSystemRotation / 10, 0, 0, 1); // rotate on the ... axis
@@ -275,8 +262,7 @@ void Planets::CreatePluto(float solarSystemRotation)
 	//glutSolidSphere(1, 20, 10);
 	createTexturedPlanet("texture_pluto_fictional.bmp", 1, 20, 10);
 	glPopMatrix();
-		
-		
+
 	//////////////////////////////////////////////////////////////////////
 }
 
@@ -303,7 +289,6 @@ void Planets::LoadPlanetImages(const char* fileName)
 		delete image;
 		imageLoaded = true;
 	}
-
 }
 
 void Planets::createTexturedPlanet(string planetImageLocation, int radius, int slices, int stacks)
@@ -316,4 +301,3 @@ void Planets::createTexturedPlanet(string planetImageLocation, int radius, int s
 	gluQuadricTexture(quadPlanet, 1);
 	gluSphere(quadPlanet, radius, slices, stacks);
 }
-

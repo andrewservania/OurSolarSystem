@@ -1,19 +1,15 @@
 #include "Earth.h"
 
-
 Earth::Earth()
-{    
+{
 	mSolarSystemRotation = 10;
-	 mUnknownRotationValue = 4;
+	mUnknownRotationValue = 4;
 
 	//glPushMatrix();
-
 
 	mPlanetCoordinates.xPosition = 50; //Default: 50 Earth specific
 	mPlanetCoordinates.yPosition = 0;  //Default: 0 Earth specific
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Earth specific
-
-
 
 	mPlanetTextureFileName = "texture_earth_clouds.bmp";
 	mOrbitRadius = 50;		//Default: 50 Earth specific
@@ -26,10 +22,6 @@ Earth::Earth()
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
 
-
 Earth::~Earth()
 {
 }
-
-
-

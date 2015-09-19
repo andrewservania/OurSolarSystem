@@ -7,4 +7,3 @@ public:
 	Mercury();
 	~Mercury();
 };
-

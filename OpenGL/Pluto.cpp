@@ -1,6 +1,5 @@
 #include "Pluto.h"
 
-
 Pluto::Pluto()
 {
 	mUnknownRotationValue = 17;
@@ -9,21 +8,18 @@ Pluto::Pluto()
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Mercury specific
 
 	//glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
-	
-
 
 	glColor3f(0.6f, 0.3f, 0.1f); //dark brown
-	
+
 	mPlanetTextureFileName = "texture_pluto_fictional.bmp";
 
 	//createTexturedPlanet parameters:
 	mRadius = 4;			//Default: 8  Earth specific
 	mSlices = 20;			//Default: 50 Earth specific
 	mStacks = 10;			//Default: 50 Earth specific
-	
+
 	//Implement seperately?
 	//glRotatef(solarSystemRotation / 10, 0, 0, 1);
-
 
 	//DrawOrbit parameters:
 	mOrbitRadius = 140;		//Default: 50 Earth specific
@@ -33,7 +29,6 @@ Pluto::Pluto()
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
-
 
 Pluto::~Pluto()
 {

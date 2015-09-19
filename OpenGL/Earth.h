@@ -1,14 +1,10 @@
 #pragma once
 #include "Planet.h"
 
-
-
-class Earth : 
+class Earth :
 	public Planet
 {
-	
 public:
 	Earth();
 	~Earth();
 };
-

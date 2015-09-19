@@ -5,7 +5,6 @@
 
 KeyBoardControl::KeyBoardControl()
 {
-
 }
 KeyBoardControl::KeyBoardControl(Planets* planets, Camera* camera)
 {
@@ -42,9 +41,8 @@ void KeyBoardControl::ListenToKeys(unsigned char key, int x, int y)
 	case 'o':	mCamera->visibility = !mCamera->visibility;										break;
 		///////////////////////////////////////////////////////////////
 
-
 		////////Solar System Animation/////////////////////////////////
-	case 'a' : mCamera->animate = !mCamera->animate;											break;
+	case 'a': mCamera->animate = !mCamera->animate;											break;
 		///////////////////////////////////////////////////////////////
 
 		//////Lighting/////////////////////////////////////////////////
@@ -62,7 +60,5 @@ void KeyBoardControl::ListenToKeys(unsigned char key, int x, int y)
 	case 'g': mCamera->lightPosX--;																break;
 	case 'h': mCamera->lightPosY--;																break;
 	case 'j': mCamera->lightPosZ--;																break;
-
-
 	}
 }
