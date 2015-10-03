@@ -172,6 +172,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Axes.cpp" />
+    <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="IRenderableObject.cpp" />
     <ClCompile Include="Jupiter.cpp" />
@@ -183,7 +185,6 @@
     <ClCompile Include="OrbitLane.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Earth.cpp" />
-    <ClCompile Include="Planets.cpp" />
     <ClCompile Include="Pluto.cpp" />
     <ClCompile Include="Saturn.cpp" />
     <ClCompile Include="Sun.cpp" />
@@ -194,6 +195,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Axes.h" />
+    <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GameWorld.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="IRenderableObject.h" />
     <ClInclude Include="Jupiter.h" />
@@ -204,7 +207,6 @@
     <ClInclude Include="OrbitLane.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Earth.h" />
-    <ClInclude Include="Planets.h" />
     <ClInclude Include="Pluto.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Saturn.h" />

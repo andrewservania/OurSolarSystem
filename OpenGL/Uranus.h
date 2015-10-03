@@ -9,5 +9,6 @@ private:
 public:
 	Uranus();
 	~Uranus();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };

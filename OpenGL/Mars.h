@@ -9,5 +9,6 @@ private:
 public:
 	Mars();
 	~Mars();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };

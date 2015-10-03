@@ -1,15 +1,14 @@
 #pragma once
 
-#include <string>
 
 #include "glut.h"
 #include "freeglut.h"
 #include "GL.h"
-
 #include "imageloader.h"
+#include "IRenderableObject.h"
+#include <string>
 
-using namespace std;
-class UniverseBackground
+class UniverseBackground : public IRenderableObject
 {
 private:
 	GLuint mTextureId; //The id of the texture
@@ -17,7 +16,7 @@ private:
 
 	bool mIsUniverseRendering;
 	bool mIsUniverseBackgroundInitialized;
-	string fileLocationOfUniverses;
+	std::string fileLocationOfUniverses;
 
 	int radius; //Max: 1000, above 1000 will cause your view to display a black hole.
 	//Possibly indicating a distance larger than the render distance.
@@ -26,7 +25,8 @@ public:
 	UniverseBackground(int _radius);
 	~UniverseBackground();
 	bool InitializeUniverseBackground();
-	bool Render();
+	void Render() override;
+	void Update() override;
 	void RenderWireFrame();
 	void RenderUniverseBackground();
 	GLuint LoadTexture(Image* image);

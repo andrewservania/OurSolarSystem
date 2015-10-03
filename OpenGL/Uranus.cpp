@@ -1,5 +1,6 @@
 #include "Uranus.h"
 
+
 Uranus::Uranus()
 {
 	mUnknownRotationValue = 8;
@@ -9,8 +10,10 @@ Uranus::Uranus()
 	mPlanetCoordinates.zPosition = 0;  //Default: 0 Mercury specific
 
 	//glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+	
 
-	glColor3f(0.4f, 0.4f, 1.0f); // light blue
+
+	//glColor3f(0.4f, 0.4f, 1.0f); // light blue DON'T CALL!
 
 	mPlanetTextureFileName = "texture_uranus.bmp";
 
@@ -19,20 +22,42 @@ Uranus::Uranus()
 	mSlices = 20;			//Default: 50 Earth specific
 	mStacks = 10;			//Default: 50 Earth specific
 
-	//Uranus' rings! Implement render method seperately!
-	//glRotatef(90, 1, 0, 0);
-	//drawOrbit(6.4f, 20, 1, 1);
-	//drawOrbit(6.2f, 20, 1, 1);
 
-	//DrawOrbit parameters:
-	mOrbitRadius = 110;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.4f;    //Default: 1.0f TODO: Figure out this necessary Value!
+
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
 
+
 Uranus::~Uranus()
 {
+}
+
+
+void Uranus::Render()
+{
+	glPushMatrix();
+	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
+	sunOrbitAngle += 0.3f;
+
+	glPushMatrix();
+
+	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // Default angle of a planet. If you don't want the planet's texture to look upside down, keep this one as it is.
+
+
+	glRotatef(planetOrbitAngle, 0.0f, 0.0f, 1.0f);
+	planetOrbitAngle += 0.2f;
+	CreateTexturedPlanet(mRadius, mSlices, mStacks);
+
+
+	glPopMatrix();
+	glPopMatrix();
+	//return mRenderStatus;
+}
+
+void Uranus::Update()
+{
+
 }

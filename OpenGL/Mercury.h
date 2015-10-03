@@ -9,5 +9,6 @@ private:
 public:
 	Mercury();
 	~Mercury();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };

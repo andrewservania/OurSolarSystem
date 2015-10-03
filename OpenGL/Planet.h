@@ -8,10 +8,10 @@
 #include "freeglut.h"
 #include "gl/GL.h"
 #include "imageloader.h"
-
+#include "IRenderableObject.h"
 using namespace std;
 
-class Planet
+class Planet : public IRenderableObject
 {
 protected:
 	bool mShowOrbitalLanes;
@@ -49,7 +49,7 @@ public:
 	Planet();
 	~Planet();
 	
-	bool virtual Render(); //virtual in order to make it override-able. Meaning, you can have a Render() function with specific code for every planet object that you create.
+	virtual void Render() override; //virtual in order to make it override-able. Meaning, you can have a Render() function with specific code for every planet object that you create.
 	//OTHER the created planet will just use the code implemented in the render() function of Planet.cpp
 	GLuint LoadPlanetTexture(Image* image);
 	void LoadPlanetImage(const char* fileName);
