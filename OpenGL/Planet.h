@@ -8,34 +8,35 @@
 #include "freeglut.h"
 #include "gl/GL.h"
 #include "imageloader.h"
-
+#include "IRenderableObject.h"
 using namespace std;
 
-class Planet
+class Planet : public IRenderableObject
 {
 protected:
 	bool mShowOrbitalLanes;
 	float mColorValue;
-	bool mVisibility;
+
+
 	bool mIsImageLoaded;
+
 	string mPlanetTextureDefaultFolder;
 	string mPlanetTextureFileName;
+
 	bool mRenderStatus;
 	float mSolarSystemRotation;
 
 	GLuint mTextureIDPlanet;
 	GLUquadric *mQuadPlanet;
 
-	GLfloat mOrbitRadius;
-	int mNumberOfPoints;
 
-	int mRadius;
+
+	GLfloat mRadius;
 	int mSlices;
 	int mStacks;
 
-
-
-	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
+//	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
+	int mUnknownRotationValue;
 
 	/* To return complete planet coordinates in one data-structure*/
 	struct PlanetCoordinates{
@@ -44,33 +45,31 @@ protected:
 		GLfloat zPosition;
 	} mPlanetCoordinates;
 
-	int mUnknownRotationValue;
-
-
 public:
 	Planet();
 	~Planet();
-	void SetVisibility(bool visibility);
-	bool Render();
+	
+	virtual void Render() override; //virtual in order to make it override-able. Meaning, you can have a Render() function with specific code for every planet object that you create.
+	//OTHER the created planet will just use the code implemented in the render() function of Planet.cpp
 	GLuint LoadPlanetTexture(Image* image);
 	void LoadPlanetImage(const char* fileName);
-	void CreateTexturedPlanet( int radius, int slices, int stacks);
-	void DrawOrbit(GLfloat radius, int numPoints,bool visible, GLfloat customV);
+	void CreateTexturedPlanet(GLfloat radius, int slices, int stacks);
+	void DrawOrbit(GLfloat radius, int numPoints, bool visible, GLfloat customV);
 
 	//*Standard Planet getters*/
 	GLfloat GetX();
 	GLfloat GetY();
 	GLfloat GetZ();
+
 	PlanetCoordinates GetPosition();
-	int GetSize();
+	GLfloat GetSize();
 
 	/*Standard Planet setters*/
 	void SetX(GLfloat value);
 	void SetY(GLfloat value);
 	void SetZ(GLfloat value);
-	void SetPosition(GLfloat x, GLfloat y, GLfloat z );
+
+	void SetPosition(GLfloat x, GLfloat y, GLfloat z);
 	void SetPosition(PlanetCoordinates planetCoordinates);
-	void SetSize(int radius);
-
+	void SetSize(GLfloat radius);
 };
-

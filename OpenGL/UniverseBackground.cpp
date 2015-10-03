@@ -1,29 +1,41 @@
 #include "UniverseBackground.h"
+#include "GameEngine.h"
 
-
-UniverseBackground::UniverseBackground()
+UniverseBackground::UniverseBackground(int _radius)
 {
+	radius = _radius;
 	fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 	mQuad = gluNewQuadric();
-	Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str());
+	//Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str()); //Defualt
+	Image* image = loadBMP((fileLocationOfUniverses + "hubble1.bmp").c_str()); 
+
 	mTextureId = LoadTexture(image);
 	 delete image;
-
-	//solarSystemPlanets = new Planets();
-
+	 
+	 glEnable(GL_TEXTURE_2D);
 }
-
 
 UniverseBackground::~UniverseBackground()
 {
 }
 
-bool UniverseBackground::Render()
+
+void UniverseBackground::Render()
 {
-	mIsUniverseRendering = true;
-	return mIsUniverseRendering;
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glBindTexture(GL_TEXTURE_2D, mTextureId);
+	gluQuadricTexture(mQuad, 1);
+	gluSphere(mQuad, radius, 100, 100);
+
+	//mIsUniverseRendering = true;
+	//return mIsUniverseRendering;
 }
 
+void UniverseBackground::Update()
+{
+
+}
 void UniverseBackground::RenderWireFrame()
 {
 	glColor3f(0.0f, 0.0f, 1.0f);
@@ -31,15 +43,12 @@ void UniverseBackground::RenderWireFrame()
 }
 
 void UniverseBackground::RenderUniverseBackground(){
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, mTextureId);
-	gluQuadricTexture(mQuad, 1);
-	gluSphere(mQuad, 1500, 100, 100);
+	
+
 }
 
-GLuint UniverseBackground::LoadTexture(Image* image) {
 
+GLuint UniverseBackground::LoadTexture(Image* image) {
 	GLuint textureId;
 	glGenTextures(1, &textureId);				//Make room for our texture
 	glBindTexture(GL_TEXTURE_2D, textureId);	//Tell OpenGL which texture to edit

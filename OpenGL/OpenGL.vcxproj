@@ -30,6 +30,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -43,6 +44,7 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v120</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -90,13 +92,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl</AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL\freeglut\lib;$(SolutionDir)\OpenGL\glut-3.7.6-bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;opengl32.lib;freeglut.lib;glut32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /E /Y "$(ProjectDir)DLLs" "$(SolutionDir)Debug"</Command>
@@ -104,6 +107,9 @@
     <PostBuildEvent>
       <Message>Copy freeGlut DLL to Debug folder when debugging</Message>
     </PostBuildEvent>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -130,7 +136,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\OpenGL\freeglut\include\GL;$(SolutionDir)\OpenGL\glut-3.7.6-bin;$(SolutionDir)\OpenGL\gl</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,6 +144,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)\OpenGL\freeglut\lib;$(SolutionDir)\OpenGL\glut-3.7.6-bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /E /Y "$(ProjectDir)DLLs" "$(SolutionDir)Release"</Command>
@@ -165,41 +172,47 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Axes.cpp" />
+    <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
     <ClCompile Include="imageloader.cpp" />
+    <ClCompile Include="IRenderableObject.cpp" />
     <ClCompile Include="Jupiter.cpp" />
     <ClCompile Include="KeyBoardControl.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mars.cpp" />
     <ClCompile Include="Mercury.cpp" />
     <ClCompile Include="Neptune.cpp" />
+    <ClCompile Include="OrbitLane.cpp" />
     <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Earth.cpp" />
-    <ClCompile Include="Planets.cpp" />
     <ClCompile Include="Pluto.cpp" />
     <ClCompile Include="Saturn.cpp" />
     <ClCompile Include="Sun.cpp" />
     <ClCompile Include="UniverseBackground.cpp" />
-    <ClCompile Include="UniverseCameraParameters.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Uranus.cpp" />
     <ClCompile Include="Venus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Axes.h" />
+    <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="GameWorld.h" />
     <ClInclude Include="imageloader.h" />
+    <ClInclude Include="IRenderableObject.h" />
     <ClInclude Include="Jupiter.h" />
     <ClInclude Include="KeyBoardControl.h" />
     <ClInclude Include="Mars.h" />
     <ClInclude Include="Mercury.h" />
     <ClInclude Include="Neptune.h" />
+    <ClInclude Include="OrbitLane.h" />
     <ClInclude Include="Planet.h" />
     <ClInclude Include="Earth.h" />
-    <ClInclude Include="Planets.h" />
     <ClInclude Include="Pluto.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Saturn.h" />
     <ClInclude Include="Sun.h" />
     <ClInclude Include="UniverseBackground.h" />
-    <ClInclude Include="UniverseCameraParameters.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Uranus.h" />
     <ClInclude Include="Venus.h" />
   </ItemGroup>

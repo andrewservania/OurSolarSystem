@@ -2,21 +2,22 @@
 #include "glut.h"
 #include "freeglut.h"
 #include "GL.h"
-
+#include <string>
 using namespace std;
-
-
 
 class Axes
 {
 private:
-	bool mIsXBeingRendered , mIsYBeingRendered, mIsZBeingRendered;
+	bool mIsXBeingRendered, mIsYBeingRendered, mIsZBeingRendered;
 	bool mIsXGridBeingRendered, mIsYGridBeingRendered, mIsZGridBeingRendered;
+	GLfloat mLengthOfAxes;
+	GLfloat depth;
+	int squareSizeInGrid;
 
 public:
 	Axes();
 	~Axes();
-	
+
 	bool RenderXAxis();
 	bool RenderYAxis();
 	bool RenderZAxis();
@@ -24,7 +25,5 @@ public:
 	bool RenderXAxisGrid();
 	bool RenderYAxisGrid();
 	bool RenderZAxisGrid();
-
-
+	void drawText(string text, float x, float y, float z);
 };
-

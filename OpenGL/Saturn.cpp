@@ -14,7 +14,7 @@ Saturn::Saturn()
 	
 
 
-	glColor3f(0.9f, 0.5f, 0.1f); // darker yellow
+	//glColor3f(0.9f, 0.5f, 0.1f); // darker yellow - PROBLEMS WITH THIS LINE HERE! DON'T CALL!
 	mPlanetTextureFileName = "texture_saturn.bmp";
 
 	//createTexturedPlanet parameters:
@@ -22,29 +22,10 @@ Saturn::Saturn()
 	mSlices = 20;			//Default: 50 Earth specific
 	mStacks = 10;			//Default: 50 Earth specific
 
-	/* Render method has to be seperately implemented for Saturn due to it's
-	   rings! */
-	//glRotatef(30, 1, 0, 0);
-	//drawOrbit(6.2f, 20, 1, 1);
-	//drawOrbit(6.5f, 20, 1, 1);
-	//drawOrbit(7.1f, 20, 1, 1);
-	//drawOrbit(7.6f, 20, 1, 1);
-	//drawOrbit(8.0f, 20, 1, 1);
-	//drawOrbit(8.2f, 20, 1, 1);
-	//drawOrbit(8.4f, 20, 1, 1);
-	//drawOrbit(8.6f, 20, 1, 1);
-	//drawOrbit(8.8f, 20, 1, 1);
-	//drawOrbit(9.0f, 20, 1, 1);
-	//drawOrbit(9.2f, 20, 1, 1);
 
 
 
 
-	//DrawOrbit parameters:
-	mOrbitRadius = 90;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.5f;    //Default: 1.0f TODO: Figure out this necessary Value!
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
@@ -52,4 +33,32 @@ Saturn::Saturn()
 
 Saturn::~Saturn()
 {
+}
+
+void Saturn::Render()
+{	
+	glPushMatrix();
+	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
+	sunOrbitAngle += 0.4f;
+
+	glPushMatrix();
+
+	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // Default angle of a planet. If you don't want the planet's texture to look upside down, keep this one as it is.
+
+
+	glRotatef(planetOrbitAngle, 0.0f, 0.0f, 1.0f);
+	planetOrbitAngle += 0.2f;
+	CreateTexturedPlanet(mRadius, mSlices, mStacks);
+
+
+	glPopMatrix();
+	glPopMatrix();
+	//return mRenderStatus;
+}
+
+void Saturn::Update()
+{
+
 }

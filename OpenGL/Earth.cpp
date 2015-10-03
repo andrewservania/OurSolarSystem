@@ -16,12 +16,11 @@ Earth::Earth()
 
 
 	mPlanetTextureFileName = "texture_earth_clouds.bmp";
-	mOrbitRadius = 50;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
+
 	mRadius = 8;			//Default: 8  Earth specific
 	mSlices = 50;			//Default: 50 Earth specific
 	mStacks = 50;			//Default: 50 Earth specific
-	mCustomValue = 0.8f;    //Default: 0.8f TODO: Figure out this necessary Value!
+
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
@@ -31,5 +30,40 @@ Earth::~Earth()
 {
 }
 
+void Earth::Render()
+{
 
 
+
+
+
+	glPushMatrix();
+	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
+	sunOrbitAngle += 0.7f;
+  
+	glPushMatrix();
+
+	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // Default angle of a planet. If you don't want Earth's texture to look upside down, keep this one as it is.
+
+
+	glRotatef(planetOrbitAngle, 0.0f, 0.0f, 1.0f);
+	planetOrbitAngle += 0.2f; 
+	CreateTexturedPlanet(mRadius, mSlices, mStacks);
+	
+
+	glPopMatrix();
+	glPopMatrix();
+
+
+//	return mRenderStatus;
+}
+
+
+
+
+void Earth::Update()
+{
+
+}

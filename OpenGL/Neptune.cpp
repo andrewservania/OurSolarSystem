@@ -13,7 +13,7 @@ Neptune::Neptune()
 	
 
 
-	glColor3f(0.6f, 0.5f, 0.7f);
+	//glColor3f(0.6f, 0.5f, 0.7f); Don't call!
 	mPlanetTextureFileName = "texture_neptune.bmp";
 
 	//createTexturedPlanet parameters:
@@ -21,11 +21,7 @@ Neptune::Neptune()
 	mSlices = 20;			//Default: 50 Earth specific
 	mStacks = 10;			//Default: 50 Earth specific
 
-	//DrawOrbit parameters:
-	mOrbitRadius = 140;		//Default: 50 Earth specific
-	mNumberOfPoints = 60;   //Default: 60 Earth specific
-	/*including mVisibilty*/
-	mCustomValue = 0.3f;    //Default: 1.0f TODO: Figure out this necessary Value!
+
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
 }
@@ -33,4 +29,39 @@ Neptune::Neptune()
 
 Neptune::~Neptune()
 {
+
+
+
+
+
+
+
+}
+
+void Neptune::Render()
+{
+	glPushMatrix();
+	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
+	sunOrbitAngle += 0.2f;
+
+	glPushMatrix();
+
+	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
+
+	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // Default angle of a planet. If you don't want the planet's texture to look upside down, keep this one as it is.
+
+
+	glRotatef(planetOrbitAngle, 0.0f, 0.0f, 1.0f);
+	planetOrbitAngle += 0.2f;
+	CreateTexturedPlanet(mRadius, mSlices, mStacks);
+
+
+	glPopMatrix();
+	glPopMatrix();
+	//return mRenderStatus;
+}
+
+void Neptune::Update()
+{
+
 }
