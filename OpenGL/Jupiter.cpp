@@ -32,7 +32,7 @@ Jupiter::~Jupiter()
 {
 }
 
-bool Jupiter::Render()
+void Jupiter::Render()
 {
 	
 
@@ -58,5 +58,11 @@ bool Jupiter::Render()
 
 	glPopMatrix();
 	glPopMatrix();
-	return mRenderStatus;
+	//return mRenderStatus;
+}
+
+
+void Jupiter::Update()
+{
+
 }

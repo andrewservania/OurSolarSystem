@@ -30,7 +30,7 @@ Earth::~Earth()
 {
 }
 
-bool Earth::Render()
+void Earth::Render()
 {
 
 
@@ -57,9 +57,13 @@ bool Earth::Render()
 	glPopMatrix();
 
 
-	return mRenderStatus;
+//	return mRenderStatus;
 }
 
 
 
 
+void Earth::Update()
+{
+
+}

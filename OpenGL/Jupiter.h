@@ -9,6 +9,7 @@ private:
 public:
 	Jupiter();
 	~Jupiter();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 

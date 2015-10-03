@@ -34,7 +34,7 @@ Mercury::~Mercury()
 }
 
 
-bool Mercury::Render()
+void Mercury::Render()
 {
 
 
@@ -60,5 +60,10 @@ bool Mercury::Render()
 
 	glPopMatrix();
 	glPopMatrix();
-	return mRenderStatus;
+	//return mRenderStatus;
+}
+
+void Mercury::Update()
+{
+
 }

@@ -9,6 +9,7 @@ private:
 public:
 	Pluto();
 	~Pluto();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 

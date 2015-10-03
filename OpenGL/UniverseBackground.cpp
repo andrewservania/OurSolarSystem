@@ -1,5 +1,5 @@
 #include "UniverseBackground.h"
-
+#include "GameEngine.h"
 
 UniverseBackground::UniverseBackground(int _radius)
 {
@@ -20,19 +20,22 @@ UniverseBackground::~UniverseBackground()
 }
 
 
-bool UniverseBackground::Render()
+void UniverseBackground::Render()
 {
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
 	gluQuadricTexture(mQuad, 1);
 	gluSphere(mQuad, radius, 100, 100);
 
-	mIsUniverseRendering = true;
-	return mIsUniverseRendering;
+	//mIsUniverseRendering = true;
+	//return mIsUniverseRendering;
 }
 
+void UniverseBackground::Update()
+{
+
+}
 void UniverseBackground::RenderWireFrame()
 {
 	glColor3f(0.0f, 0.0f, 1.0f);

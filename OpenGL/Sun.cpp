@@ -33,7 +33,7 @@ Sun::~Sun()
 {
 }
 	
-bool Sun::Render()
+void Sun::Render()
 {
 
 	glPushMatrix();
@@ -49,5 +49,10 @@ bool Sun::Render()
 
 
 	glPopMatrix();
-	return mRenderStatus;
+//	return mRenderStatus;
+}
+
+void Sun::Update()
+{
+
 }

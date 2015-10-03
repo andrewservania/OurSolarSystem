@@ -9,6 +9,7 @@ private:
 public:
 	Sun();
 	~Sun();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 

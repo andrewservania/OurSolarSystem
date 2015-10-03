@@ -34,7 +34,7 @@ Uranus::~Uranus()
 }
 
 
-bool Uranus::Render()
+void Uranus::Render()
 {
 	glPushMatrix();
 	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
@@ -54,5 +54,10 @@ bool Uranus::Render()
 
 	glPopMatrix();
 	glPopMatrix();
-	return mRenderStatus;
+	//return mRenderStatus;
+}
+
+void Uranus::Update()
+{
+
 }

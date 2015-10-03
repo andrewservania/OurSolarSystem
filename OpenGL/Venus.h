@@ -9,6 +9,7 @@ private:
 public:
 	Venus();
 	~Venus();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 

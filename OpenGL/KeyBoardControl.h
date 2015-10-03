@@ -1,7 +1,8 @@
 #pragma once
-#include "Planets.h"
-#include "Camera.h"
 
+//#include "Planets.h"
+#include "Camera.h"
+#include <windows.h>
 
 class KeyBoardControl
 {

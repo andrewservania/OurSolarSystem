@@ -33,7 +33,7 @@ Venus::~Venus()
 {
 }
 
-bool Venus::Render()
+void Venus::Render()
 {
 	glPushMatrix();
 	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
@@ -53,5 +53,10 @@ bool Venus::Render()
 
 	glPopMatrix();
 	glPopMatrix();
-	return mRenderStatus;
+	//return mRenderStatus;
+}
+
+void Venus::Update()
+{
+
 }

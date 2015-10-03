@@ -2,78 +2,53 @@
 //Name: Andrew's Funky Finite 3D Solar System
 //Author: Andrew Servania
 
-#include <iostream>
-#include <memory>
-#include <windows.h>
-#include "glut.h"
+//#include "glut.h"
 #include "freeglut.h"
 #include "GL.h"
-#include "Planets.h"
 #include "imageloader.h"
 #include "Camera.h"
 #include "KeyBoardControl.h"
-#include "Mercury.h"
-#include "Venus.h"
-#include "Earth.h"
-#include "Mars.h"
-#include "Jupiter.h"
-#include "Saturn.h"
-#include "Uranus.h"
-#include "Neptune.h"
-#include "Pluto.h"
-#include "Sun.h"
 #include "UniverseBackground.h"
 #include "Axes.h"
 #include "OrbitLane.h"
+#include "GameEngine.h"
+#include "GameWorld.h"
+
+#include <iostream>
+#include <memory>
+#include <windows.h>
 
 using namespace std;
 
 
+shared_ptr<GameWorld> gameWorld;
+shared_ptr<GameEngine> gameEngine;
 
-int FPS = 60; //Default value: 60
+//std::shared_ptr<UniverseBackground> mUniverseBackground;
+//std::shared_ptr<Sun> mSun;
+//std::shared_ptr<Mercury> mMercury;
+//std::shared_ptr<Venus> mVenus;
+//std::shared_ptr<Earth> mEarth;
+//std::shared_ptr<Mars> mMars;
+//std::shared_ptr<Jupiter> mJupiter;
+//std::shared_ptr<Saturn> mSaturn;
+//std::shared_ptr<Uranus> mUranus;
+//std::shared_ptr<Neptune> mNeptune;
+//std::shared_ptr<Pluto> mPluto;
 
 //Global variables:
 float solarSystemRotation = 0;
 float lineVertices[3] = { 0, 0, 0 };
 float aaa = -20.0f, bbb = 0.0f, ccc = 0.0f;
-
 GLuint _textureId; //The id of the texture
 GLUquadric *quad;
 
 //Planets*solarSystemPlanets;
 KeyBoardControl*keyboardControl;
 string fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
-
 float mCameraRearDistance =  100;
 float mCameraFrontDistance = 970;
-
 Camera* mCamera;
-
-unique_ptr<Sun> mSun;
-unique_ptr<Mercury> mMercury;
-unique_ptr<Venus> mVenus;
-unique_ptr<Earth> mEarth;
-unique_ptr<Mars> mMars;
-unique_ptr<Jupiter> mJupiter;
-unique_ptr<Saturn> mSaturn;
-unique_ptr<Uranus> mUranus;
-unique_ptr<Neptune> mNeptune;
-unique_ptr<Pluto> mPluto;
-unique_ptr<UniverseBackground> mUniverseBackground;
-
-//Planet lanes
-unique_ptr<OrbitLane> mOrbitLane1;
-unique_ptr<OrbitLane> mOrbitLane2;
-unique_ptr<OrbitLane> mOrbitLane3;
-unique_ptr<OrbitLane> mOrbitLane4;
-unique_ptr<OrbitLane> mOrbitLane5;
-unique_ptr<OrbitLane> mOrbitLane6;
-unique_ptr<OrbitLane> mOrbitLane7;
-unique_ptr<OrbitLane> mOrbitLane8;
-unique_ptr<OrbitLane> mOrbitLane9;
-
-
-
 string fontFilename = "...\\OpenGL\\Resources\\Fonts\\";
 string fontName = "FreeSerif.ttf";
 
@@ -108,17 +83,6 @@ void drawText(string text,float x,float y,float z){
 }
 
 
-void SetFPS(int framesPerSecond){
-
-	FPS = framesPerSecond;
-}
-
-void renderAccordingToFPS(){
-	Sleep(1000 / FPS);
-}
-
-
-
 //Display is called continuously. So this is your graphics loop.
 void Render(void)
 {
@@ -140,39 +104,38 @@ void Render(void)
 	glPopMatrix();
 
 
-	mUniverseBackground->Render();
-	
-	mSun->Render();
-	mMercury->Render();
-	mVenus->Render();
-	mEarth->Render();
-	mMars->Render();
-	mJupiter->Render();
-	mSaturn->Render();
-	mUranus->Render();
-	mNeptune->Render();
-	mPluto->Render();
+	//mUniverseBackground->Render();
+	//mSun->Render();
+	//mMercury->Render();
+	//mVenus->Render();
+	//mEarth->Render();
+	//mMars->Render();
+	//mJupiter->Render();
+	//mSaturn->Render();
+	//mUranus->Render();
+	//mNeptune->Render();
+	//mPluto->Render();
 
-	mOrbitLane1->Render(100);
-	mOrbitLane2->Render(200);
-	mOrbitLane3->Render(300);
-	mOrbitLane4->Render(400);
-	mOrbitLane5->Render(500);
-	mOrbitLane6->Render(600);
-	mOrbitLane7->Render(700);
-	mOrbitLane8->Render(800);
-	mOrbitLane9->Render(900);
+	//mOrbitLane1->Render(100);
+	//mOrbitLane2->Render(200);
+	//mOrbitLane3->Render(300);
+	//mOrbitLane4->Render(400);
+	//mOrbitLane5->Render(500);
+	//mOrbitLane6->Render(600);
+	//mOrbitLane7->Render(700);
+	//mOrbitLane8->Render(800);
+	//mOrbitLane9->Render(900);
 
 
 
 	//mAxes->RenderXAxisGrid();
-    //mAxes->RenderYAxisGrid();
+	//mAxes->RenderYAxisGrid();
 	//mAxes->RenderZAxisGrid();
 
 	//glLoadIdentity();
 
 	glutSwapBuffers();
-	renderAccordingToFPS();
+
 }
 
 void Reshape(GLint width, GLint height)
@@ -408,12 +371,20 @@ void arrowPadInput(int key, int x, int y){
 	}
 }
 
+
+
+
+
+
+
 int main(int argc, char* argv[])
 {
+
 	cout << "Loading...\n";
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 	
+
 	mCamera = new Camera();
 
 	//solarSystemPlanets = new Planets();
@@ -422,67 +393,73 @@ int main(int argc, char* argv[])
 	//glEnable(GL_LIGHTING);
 	keyboardControl->ToggleFullScreen(false);
 	//Advanced experiment. Smart Pointers
-	mUniverseBackground = make_unique<UniverseBackground>(1000);
-	mSun = make_unique<Sun>();
-	mMercury = make_unique<Mercury>();
-	mVenus = make_unique<Venus>();
-	mEarth  = make_unique<Earth>();
-	mMars = make_unique<Mars>();
-	mJupiter = make_unique<Jupiter>();
-	mSaturn = make_unique<Saturn>();
-	mUranus = make_unique<Uranus>();
-	mNeptune = make_unique<Neptune>();
-	mPluto = make_unique<Pluto>();
-
+	gameEngine = make_shared<GameEngine>();
+	gameWorld = make_shared<GameWorld>();
 	
-	mMercury->SetPosition(100, 0, 0);
-	mVenus->SetPosition(200, 0, 0);
-	mEarth->SetPosition(300, 0, 0);
-	mMars->SetPosition(400, 0, 0);
-	mJupiter->SetPosition(500, 0, 0);
-	mSaturn->SetPosition(600, 0, 0);
-	mUranus->SetPosition(700, 0, 0);
-	mNeptune->SetPosition(800, 0, 0);
-	mPluto->SetPosition(900, 0, 0);
+	// Create the background for the universe
+	//mUniverseBackground = make_shared<UniverseBackground>(1000);
+	//mSun = make_shared<Sun>();
+	//mMercury = make_shared<Mercury>();
+	//mVenus = make_shared<Venus>();
+	//mEarth = make_shared<Earth>();
+	//mMars = make_shared<Mars>();
+	//mJupiter = make_shared<Jupiter>();
+	//mSaturn = make_shared<Saturn>();
+	//mUranus = make_shared<Uranus>();
+	//mNeptune = make_shared<Neptune>();
+	//mPluto = make_shared<Pluto>();
 
-	mMercury->SetSize(5);
-	mVenus->SetSize(6);
-	mEarth->SetSize(40);
-	mMars->SetSize(10);
-	mJupiter->SetSize(27);
-	mSaturn->SetSize(23);
-	mUranus->SetSize(19);
-	mNeptune->SetSize(18);
-	mPluto->SetSize(3);
+	//// Set their sizes
+	//mMercury->SetSize(5);
+	//mVenus->SetSize(6);
+	//mEarth->SetSize(40);
+	//mMars->SetSize(10);
+	//mJupiter->SetSize(27);
+	//mSaturn->SetSize(23);
+	//mUranus->SetSize(19);
+	//mNeptune->SetSize(18);
+	//mPluto->SetSize(3);
+
+	////// Set their locations
+	//mMercury->SetPosition(100, 0, 0);
+	//mVenus->SetPosition(200, 0, 0);
+	//mEarth->SetPosition(300, 0, 0);
+	//mMars->SetPosition(400, 0, 0);
+	//mJupiter->SetPosition(500, 0, 0);
+	//mSaturn->SetPosition(600, 0, 0);
+	//mUranus->SetPosition(700, 0, 0);
+	//mNeptune->SetPosition(800, 0, 0);
+	//mPluto->SetPosition(900, 0, 0);
+
+
 
 	//mAxes = make_unique<Axes>();
 	
-	mOrbitLane1 = make_unique<OrbitLane>();
-	mOrbitLane2 = make_unique<OrbitLane>();
-	mOrbitLane3 = make_unique<OrbitLane>();
-	mOrbitLane4 = make_unique<OrbitLane>();
-	mOrbitLane5 = make_unique<OrbitLane>();
-	mOrbitLane6 = make_unique<OrbitLane>();
-	mOrbitLane7 = make_unique<OrbitLane>();
-	mOrbitLane8 = make_unique<OrbitLane>();
-	mOrbitLane9 = make_unique<OrbitLane>();
 
-
-
-
-	SetFPS(60);
 	// Initialize OpenGL graphics state
-	InitGraphics();
+	//InitGraphics();
 
-	// Register callbacks:
-	glutDisplayFunc(Render);
-	glutReshapeFunc(Reshape);
-	glutKeyboardFunc(KeyboardFunc);
-	glutMouseFunc(MouseButton);
-	glutMotionFunc(MouseMotion);
-	glutMouseWheelFunc(mouseWheel);
-	glutIdleFunc(IdleFunc);
-	glutSpecialFunc(arrowPadInput);
+	//// Register callbacks:
+	//glutDisplayFunc(Render);
+	//glutReshapeFunc(Reshape);
+	//glutKeyboardFunc(KeyboardFunc);
+	//glutMouseFunc(MouseButton);
+	//glutMotionFunc(MouseMotion);
+	//glutMouseWheelFunc(mouseWheel);
+	//glutIdleFunc(IdleFunc);
+	//glutSpecialFunc(arrowPadInput);
+	
+
+	glutDisplayFunc(GameEngine::Render);
+	glutReshapeFunc(GameEngine::Reshape);
+	glutKeyboardFunc(GameEngine::GatherKeyboardInput);
+	glutMouseFunc(GameEngine::GatherMouseClickInput);
+	glutMotionFunc(GameEngine::GatherMouseMotionInput);
+	glutMouseWheelFunc(GameEngine::GatherMouseScrollWheelInput);
+	glutIdleFunc(GameEngine::IdleFunction);
+	glutSpecialFunc(GameEngine::GatherKeyboardArrowPadInput);
+
+
 
 	cout << "Done.\n";
 	// Turn the flow of control over to GLUT

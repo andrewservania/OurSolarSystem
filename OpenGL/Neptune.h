@@ -9,7 +9,8 @@ private:
 public:
 	Neptune();
 	~Neptune();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 
 

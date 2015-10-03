@@ -1,5 +1,8 @@
 #include "Planet.h"
+#include "GameEngine.h"
+#include <memory>
 
+using namespace std;
 
 Planet::Planet()
 {
@@ -27,7 +30,7 @@ Planet::~Planet()
  All planets get this standard function through inheritance
  Make sure all necessary variables are initialized accordingly
  within the constructor of a planet*/
-bool Planet::Render(){
+void Planet::Render(){
 
 	glPushMatrix();
 	//glRotatef(mSolarSystemRotation / mUnknownRotationValue, 0, 0, 0);
@@ -38,7 +41,7 @@ bool Planet::Render(){
 
 	glPopMatrix();
 
-	return mRenderStatus;
+	//return mRenderStatus;
 }
 
 
@@ -95,8 +98,8 @@ GLuint Planet::LoadPlanetTexture(Image* image)
 
 void Planet::LoadPlanetImage(const char* fileName)
 {
-	if (mIsImageLoaded == false)
-	{
+	//if (mIsImageLoaded == false)
+	//{
 		glEnable(GL_DEPTH_TEST);
 	   // glEnable(GL_LIGHTING); //powerful lighting effect. Use it wisely!
 		glEnable(GL_LIGHT0);
@@ -108,11 +111,11 @@ void Planet::LoadPlanetImage(const char* fileName)
 		mTextureIDPlanet = LoadPlanetTexture(image);
 
 		delete image;
-		mIsImageLoaded = true;
-	}
-	else{
-		mIsImageLoaded = false;
-	}
+	//	mIsImageLoaded = true;
+	//}
+	//else{
+	//	mIsImageLoaded = false;
+	//}
 }
 
 void Planet::CreateTexturedPlanet(GLfloat radius, int slices, int stacks)

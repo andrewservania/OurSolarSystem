@@ -34,7 +34,7 @@ Mars::~Mars()
 {
 }
 
-bool Mars::Render()
+void Mars::Render()
 {
 
 
@@ -63,6 +63,10 @@ bool Mars::Render()
 	glPopMatrix();
 
 
-	return mRenderStatus;
+	//return mRenderStatus;
 }
 
+void Mars::Update()
+{
+
+}

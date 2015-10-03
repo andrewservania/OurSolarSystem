@@ -34,7 +34,7 @@ Pluto::~Pluto()
 {
 }
 
-bool Pluto::Render()
+void Pluto::Render()
 {
 	glPushMatrix();
 	glRotatef(sunOrbitAngle, 0.0f, 1.0f, 0.0f); //responsible for creating an orbit lane for the planet
@@ -54,5 +54,10 @@ bool Pluto::Render()
 
 	glPopMatrix();
 	glPopMatrix();
-	return mRenderStatus;
+	//return mRenderStatus;
+}
+
+void Pluto::Update()
+{
+
 }

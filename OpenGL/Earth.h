@@ -13,6 +13,7 @@ private:
 public:
 	Earth();
 	~Earth();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 

@@ -9,6 +9,7 @@ private:
 public:
 	Saturn();
 	~Saturn();
-	bool Render() override;
+	void Render() override;
+	void Update() override;
 };
 
