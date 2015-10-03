@@ -1,10 +1,8 @@
 #include "Sun.h"
 
-
 Sun::Sun()
 {
 	//glColor3f(1.0f, 1.0f, 0.0f);
-
 
 	mUnknownRotationValue = 3;
 
@@ -22,37 +20,29 @@ Sun::Sun()
 	mSlices = 40;			//Default: 50 Earth specific
 	mStacks = 40;			//Default: 50 Earth specific
 
-
-
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
-
 }
-
 
 Sun::~Sun()
 {
 }
-	
+
 void Sun::Render()
 {
-
 	glPushMatrix();
 
 	glTranslatef(mPlanetCoordinates.xPosition, mPlanetCoordinates.yPosition, mPlanetCoordinates.zPosition);
 
 	glRotatef(-90.0f, 1.0f, 0.0f, 0.0f); // Default angle of a planet. If you don't want the planet's texture to look upside down, keep this one as it is.
 
-
 	glRotatef(planetOrbitAngle, 0.0f, 0.0f, 1.0f);
 	planetOrbitAngle += 0.2f;
 	CreateTexturedPlanet(mRadius, mSlices, mStacks);
 
-
 	glPopMatrix();
-//	return mRenderStatus;
+	//	return mRenderStatus;
 }
 
 void Sun::Update()
 {
-
 }

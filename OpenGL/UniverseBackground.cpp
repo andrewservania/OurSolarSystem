@@ -7,22 +7,20 @@ UniverseBackground::UniverseBackground(int _radius)
 	fileLocationOfUniverses = "..\\OpenGL\\Resources\\Universe Background Pictures\\";
 	mQuad = gluNewQuadric();
 	//Image* image = loadBMP((fileLocationOfUniverses + "universe4.bmp").c_str()); //Defualt
-	Image* image = loadBMP((fileLocationOfUniverses + "hubble1.bmp").c_str()); 
+	Image* image = loadBMP((fileLocationOfUniverses + "hubble1.bmp").c_str());
 
 	mTextureId = LoadTexture(image);
-	 delete image;
-	 
-	 glEnable(GL_TEXTURE_2D);
+	delete image;
+
+	glEnable(GL_TEXTURE_2D);
 }
 
 UniverseBackground::~UniverseBackground()
 {
 }
 
-
 void UniverseBackground::Render()
 {
-
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glBindTexture(GL_TEXTURE_2D, mTextureId);
 	gluQuadricTexture(mQuad, 1);
@@ -34,7 +32,6 @@ void UniverseBackground::Render()
 
 void UniverseBackground::Update()
 {
-
 }
 void UniverseBackground::RenderWireFrame()
 {
@@ -43,16 +40,13 @@ void UniverseBackground::RenderWireFrame()
 }
 
 void UniverseBackground::RenderUniverseBackground(){
-	
-
 }
-
 
 GLuint UniverseBackground::LoadTexture(Image* image) {
 	GLuint textureId;
 	glGenTextures(1, &textureId);				//Make room for our texture
 	glBindTexture(GL_TEXTURE_2D, textureId);	//Tell OpenGL which texture to edit
-												//Map the image to the texture
+	//Map the image to the texture
 	glTexImage2D(GL_TEXTURE_2D,                 //Always GL_TEXTURE_2D
 		0,										//0 for now
 		GL_RGB,									//Format OpenGL uses for image
@@ -60,9 +54,7 @@ GLuint UniverseBackground::LoadTexture(Image* image) {
 		0,										//The border of the image
 		GL_RGB,									//GL_RGB, because pixels are stored in RGB format
 		GL_UNSIGNED_BYTE,						//GL_UNSIGNED_BYTE, because pixels are stored
-												//as unsigned numbers
+		//as unsigned numbers
 		image->pixels);							//The actual pixel data
 	return textureId;							//Returns the id of the texture
 }
-
-

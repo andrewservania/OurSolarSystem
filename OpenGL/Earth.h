@@ -1,9 +1,7 @@
 #pragma once
 #include "Planet.h"
 
-
-
-class Earth : 
+class Earth :
 	public Planet
 {
 private:
@@ -16,4 +14,3 @@ public:
 	void Render() override;
 	void Update() override;
 };
-

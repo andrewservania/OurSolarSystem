@@ -12,5 +12,3 @@ public:
 	void Render() override;
 	void Update() override;
 };
-
-
