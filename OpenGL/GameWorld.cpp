@@ -53,7 +53,6 @@ GameWorld::GameWorld()
 	GameEngine::AddRenderableObject(mNeptune);
 	GameEngine::AddRenderableObject(mPluto);
 
-
 	// Create orbital lanes
 	mOrbitLane1 = make_shared<OrbitLane>();
 	mOrbitLane2 = make_shared<OrbitLane>();
@@ -66,9 +65,7 @@ GameWorld::GameWorld()
 	mOrbitLane9 = make_shared<OrbitLane>();
 
 	// Don't forget to add the lanes as render-able objects!
-
 }
-
 
 GameWorld::~GameWorld()
 {

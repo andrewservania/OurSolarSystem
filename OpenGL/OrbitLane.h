@@ -12,4 +12,3 @@ public:
 	~OrbitLane();
 	void Render(GLfloat radius);
 };
-

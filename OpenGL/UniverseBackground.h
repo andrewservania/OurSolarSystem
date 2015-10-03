@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "glut.h"
 #include "freeglut.h"
 #include "GL.h"

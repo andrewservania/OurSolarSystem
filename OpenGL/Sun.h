@@ -5,7 +5,7 @@ class Sun :
 {
 private:
 	GLfloat planetOrbitAngle = 0.0f;
-	
+
 public:
 	Sun();
 	~Sun();

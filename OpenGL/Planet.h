@@ -17,7 +17,6 @@ protected:
 	bool mShowOrbitalLanes;
 	float mColorValue;
 
-
 	bool mIsImageLoaded;
 
 	string mPlanetTextureDefaultFolder;
@@ -29,13 +28,11 @@ protected:
 	GLuint mTextureIDPlanet;
 	GLUquadric *mQuadPlanet;
 
-
-
 	GLfloat mRadius;
 	int mSlices;
 	int mStacks;
 
-//	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
+	//	GLfloat mCustomValue; //TODO: Figure out this necessary Value! Is used as parameter for DrawOrbit() method in Planet.cpp
 	int mUnknownRotationValue;
 
 	/* To return complete planet coordinates in one data-structure*/
@@ -48,7 +45,7 @@ protected:
 public:
 	Planet();
 	~Planet();
-	
+
 	virtual void Render() override; //virtual in order to make it override-able. Meaning, you can have a Render() function with specific code for every planet object that you create.
 	//OTHER the created planet will just use the code implemented in the render() function of Planet.cpp
 	GLuint LoadPlanetTexture(Image* image);

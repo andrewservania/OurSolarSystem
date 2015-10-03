@@ -19,7 +19,6 @@ class GameWorld
 {
 private:
 
-
 	std::shared_ptr<UniverseBackground> mUniverseBackground;
 	std::shared_ptr<Sun> mSun;
 	std::shared_ptr<Mercury> mMercury;
@@ -31,7 +30,6 @@ private:
 	std::shared_ptr<Uranus> mUranus;
 	std::shared_ptr<Neptune> mNeptune;
 	std::shared_ptr<Pluto> mPluto;
-
 
 	//Planet lanes
 	std::shared_ptr<OrbitLane> mOrbitLane1;
@@ -48,4 +46,3 @@ public:
 	GameWorld();
 	~GameWorld();
 };
-

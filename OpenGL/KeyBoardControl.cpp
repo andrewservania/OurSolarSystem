@@ -59,7 +59,7 @@ void KeyBoardControl::ListenToKeys(unsigned char key, int x, int y)
 
 	case 'r': mCamera->resetView = true;														break; // reset camera view to default position
 
-	//case 'm': mPlanets->showOrbitalLanes = !mPlanets->showOrbitalLanes;							break; // Draw Orbital Lanes
+		//case 'm': mPlanets->showOrbitalLanes = !mPlanets->showOrbitalLanes;							break; // Draw Orbital Lanes
 
 	case 't': mCamera->lightPosX++;																break;
 	case 'y': mCamera->lightPosY++;																break;
@@ -70,8 +70,6 @@ void KeyBoardControl::ListenToKeys(unsigned char key, int x, int y)
 	case 'j': mCamera->lightPosZ--;																break;
 	}
 }
-
-
 
 void KeyBoardControl::ToggleFullScreen(bool isFullScreen)
 {
@@ -91,7 +89,6 @@ void KeyBoardControl::ToggleFullScreen(bool isFullScreen)
 		glutGameModeString(screenResolutionSetting); //the settings for full screen mode
 
 		glutEnterGameMode(); //set glut to full screen using the settings in the line above
-
 	}
 
 	else
