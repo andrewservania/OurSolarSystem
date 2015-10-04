@@ -19,6 +19,9 @@ Mercury::Mercury()
 	mStacks = 10;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+
+	SetSize(5);
+	SetPosition(100, 0, 0);
 }
 
 Mercury::~Mercury()

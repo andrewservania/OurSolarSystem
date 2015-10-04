@@ -1,4 +1,7 @@
 #include "Earth.h"
+#include <memory>
+
+using namespace std;
 
 Earth::Earth()
 {
@@ -18,6 +21,10 @@ Earth::Earth()
 	mStacks = 50;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+	
+
+	SetSize(40);
+	SetPosition(300, 0, 0);
 }
 
 Earth::~Earth()

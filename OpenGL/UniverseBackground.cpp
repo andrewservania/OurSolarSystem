@@ -13,6 +13,7 @@ UniverseBackground::UniverseBackground(int _radius)
 	delete image;
 
 	glEnable(GL_TEXTURE_2D);
+	GameEngine::AddRenderableObject(this);
 }
 
 UniverseBackground::~UniverseBackground()

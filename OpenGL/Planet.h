@@ -2,14 +2,15 @@
 // Andrew Servania
 //01-Feb-2015
 #pragma once
-#include <string>
-#include <windows.h>
 #include "glut.h"
 #include "freeglut.h"
 #include "gl/GL.h"
 #include "imageloader.h"
 #include "IRenderableObject.h"
-using namespace std;
+
+#include <string>
+#include <windows.h>
+
 
 class Planet : public IRenderableObject
 {
@@ -19,8 +20,8 @@ protected:
 
 	bool mIsImageLoaded;
 
-	string mPlanetTextureDefaultFolder;
-	string mPlanetTextureFileName;
+	std::string mPlanetTextureDefaultFolder;
+	std::string mPlanetTextureFileName;
 
 	bool mRenderStatus;
 	float mSolarSystemRotation;

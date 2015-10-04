@@ -19,6 +19,9 @@ Neptune::Neptune()
 	mStacks = 10;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+
+	SetSize(18);
+	SetPosition(800, 0, 0);
 }
 
 Neptune::~Neptune()

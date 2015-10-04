@@ -2,7 +2,7 @@
 
 using namespace std;
 
-vector<shared_ptr<IRenderableObject>> GameEngine::renderableObjects;
+vector<IRenderableObject*> GameEngine::renderableObjects;
 std::shared_ptr<Camera> GameEngine::mCamera;
 std::shared_ptr<KeyBoardControl> GameEngine::mKeyboardControl;
 float GameEngine::aaa = -20.0f;
@@ -25,7 +25,7 @@ GameEngine::~GameEngine()
 
 void GameEngine::Update()
 {
-	for (shared_ptr<IRenderableObject> obj : renderableObjects)
+	for (IRenderableObject* obj : renderableObjects)
 		obj->Update();
 }
 
@@ -47,7 +47,7 @@ void GameEngine::Render()
 	glLineWidth(2.0);						// Width of ALL Lines in the 3D environment
 	glPopMatrix();
 
-	for (shared_ptr<IRenderableObject> obj : renderableObjects)	obj->Render();
+	for (IRenderableObject* obj : renderableObjects)	obj->Render();
 
 	glutSwapBuffers();
 	Sleep(1000 / framesPerSecond);
@@ -243,7 +243,7 @@ void GameEngine::IdleFunction()
 	//glutPostRedisplay();
 }
 
-void GameEngine::AddRenderableObject(std::shared_ptr<IRenderableObject> object)
+void GameEngine::AddRenderableObject(IRenderableObject* object)
 {
 	renderableObjects.push_back(object);
 }

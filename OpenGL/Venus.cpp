@@ -19,6 +19,8 @@ Venus::Venus()
 	mStacks = 10;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+	SetSize(6);
+	SetPosition(200, 0, 0);
 }
 
 Venus::~Venus()

@@ -53,17 +53,19 @@ bool Axes::RenderXAxisGrid()
 	glColor3f(1.0f, 0.0f, 0.0f); /*Red*/
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
-		glVertex3f(0.0f, 0.0f, 0.0f + i * 5);
-		glVertex3f(depth, 0.0f, i * 5);
+		GLfloat val = static_cast<GLfloat>(i);
+		glVertex3f(0.0f, 0.0f, 0.0f + val * 5);
+		glVertex3f(depth, 0.0f, val * 5);
 
-		glVertex3f(0.0f + i * 5, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * 5, 0.0f, depth);
+		glVertex3f(0.0f + val * 5, 0.0f, 0.0f);
+		glVertex3f(0.0f + val * 5, 0.0f, depth);
 	}
 	glClearColor(0, 0, 0, 1);
 	glEnd();
 	for (int i = 0; i < depth; i++){
 		if ((i % 100) == 0){
-			drawText(to_string(i), i, 0, 0);
+			GLfloat val = static_cast<GLfloat>(i);
+			drawText(to_string(val), val, 0, 0);
 		}
 	}
 	return mIsXGridBeingRendered;
@@ -75,18 +77,20 @@ bool Axes::RenderYAxisGrid()
 	glBegin(GL_LINES);
 
 	for (int i = 0; i <= mLengthOfAxes; i++){
-		glVertex3f(0.0f + i * 5, 0.0f, 0.0f);
-		glVertex3f(0.0f + i * 5, depth, 0.0f);
+		GLfloat val = static_cast<GLfloat>(i);
+		glVertex3f(0.0f + val * 5, 0.0f, 0.0f);
+		glVertex3f(0.0f + val * 5, depth, 0.0f);
 
-		glVertex3f(0.0f, 0.0f + i * 5, 0.0f);
-		glVertex3f(depth, 0.0f + i * 5, 0.0f);
+		glVertex3f(0.0f, 0.0f + val * 5, 0.0f);
+		glVertex3f(depth, 0.0f + val * 5, 0.0f);
 	}
 
 	glEnd();
 
 	for (int i = 0; i < depth; i++){
 		if ((i % 100) == 0){
-			drawText(to_string(i), 0, i, 0);
+			GLfloat val = static_cast<GLfloat>(i);
+			drawText(to_string(val), 0, val, 0);
 		}
 	}
 	return mIsYGridBeingRendered;
@@ -98,18 +102,21 @@ bool Axes::RenderZAxisGrid()
 	//glPushAttrib(GL_CURRENT_BIT);
 	glBegin(GL_LINES);
 	for (int i = 0; i <= mLengthOfAxes; i++){
-		glVertex3f(0.0f, 0.0f + i * 5, 0.0f);
-		glVertex3f(0.0f, 0.0f + i * 5, depth);
+		GLfloat val = static_cast<GLfloat>(i);
+		glVertex3f(0.0f, 0.0f + val* 5, 0.0f);
+		glVertex3f(0.0f, 0.0f + val* 5, depth);
 
-		glVertex3f(0.0f, 0.0f, 0.0f + i * 5);
-		glVertex3f(0.0f, depth, 0.0f + i * 5);
+
+		glVertex3f(0.0f, 0.0f, 0.0f + val * 5);
+		glVertex3f(0.0f, depth, 0.0f + val * 5);
 	}
 
 	glEnd();
 
 	for (int i = 0; i < depth; i++){
 		if ((i % 100) == 0){
-			drawText(to_string(i), 0, 0, i);
+			GLfloat val = static_cast<GLfloat>(i);
+			drawText(to_string(val), 0, 0, val);
 		}
 	}
 

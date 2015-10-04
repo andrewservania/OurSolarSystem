@@ -22,6 +22,9 @@ Pluto::Pluto()
 	//glRotatef(solarSystemRotation / 10, 0, 0, 1);
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+	
+	SetSize(3);
+	SetPosition(900, 0, 0);
 }
 
 Pluto::~Pluto()

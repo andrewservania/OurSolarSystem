@@ -1,14 +1,17 @@
 #pragma once
-#include <string>
-#include <windows.h>
 #include "glut.h"
 #include "freeglut.h"
-#include "gl/GL.h"
-#include "GL.h"
-class OrbitLane
+#include "IRenderableObject.h"
+
+#include <string>
+#include <windows.h>
+class OrbitLane : public IRenderableObject
 {
+private: 
+	GLfloat radius;
 public:
-	OrbitLane();
+	OrbitLane(GLfloat _radius);
 	~OrbitLane();
-	void Render(GLfloat radius);
+	 virtual void Render() override;
+	 virtual void Update() override;
 };

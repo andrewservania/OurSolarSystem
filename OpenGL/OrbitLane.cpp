@@ -1,7 +1,9 @@
 #include "OrbitLane.h"
-
-OrbitLane::OrbitLane()
+#include "GameEngine.h"
+OrbitLane::OrbitLane(GLfloat _radius)
 {
+	radius = _radius;
+	GameEngine::AddRenderableObject(this);
 }
 
 OrbitLane::~OrbitLane()
@@ -9,7 +11,7 @@ OrbitLane::~OrbitLane()
 }
 double PI = 3.1415926535897f;
 int numPoints = 100;
-void OrbitLane::Render(GLfloat radius)
+void OrbitLane::Render()
 {
 	glRotatef(90, 1.0f, 0.0f, 0.0f);
 
@@ -26,4 +28,9 @@ void OrbitLane::Render(GLfloat radius)
 	glEnd();
 	glRotatef(90, 1.0f, 0.0f, 0.0f);
 	glFlush();
+}
+
+void OrbitLane::Update()
+{
+
 }

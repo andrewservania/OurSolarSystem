@@ -19,6 +19,8 @@ Saturn::Saturn()
 	mStacks = 10;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+	SetSize(23);
+	SetPosition(600, 0, 0);
 }
 
 Saturn::~Saturn()

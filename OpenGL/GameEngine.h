@@ -13,7 +13,7 @@ class GameEngine
 {
 private:
 	// A vector to include all objects to be rendered
-	static std::vector<std::shared_ptr<IRenderableObject>> renderableObjects;
+	static std::vector<IRenderableObject*> renderableObjects;
 	static const int framesPerSecond = 60;
 
 	static std::shared_ptr<Camera> mCamera;
@@ -36,7 +36,7 @@ public:
 	static void Reshape(GLint width, GLint height);
 	static void IdleFunction();
 
-	static void AddRenderableObject(std::shared_ptr<IRenderableObject> object);
+	static void AddRenderableObject(IRenderableObject* object);
 
 	// Make the game engine a singleton as there will be only one
 };

@@ -16,6 +16,10 @@ Planet::Planet()
 	//mCustomValue = 0.0f;
 	mSolarSystemRotation = 0;
 	//glColor4f(0.0f, 0.0f, 0.0f, 0.0f);
+	GameEngine::AddRenderableObject(this);
+
+	SetSize(40);
+	SetPosition(300, 0, 0);
 }
 
 Planet::~Planet()

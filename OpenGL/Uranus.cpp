@@ -20,6 +20,8 @@ Uranus::Uranus()
 	mStacks = 10;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+	SetSize(19);
+	SetPosition(700, 0, 0);
 }
 
 Uranus::~Uranus()

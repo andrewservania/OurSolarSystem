@@ -1,6 +1,8 @@
 #include "GameWorld.h"
 #include "GameEngine.h"
 
+using namespace std;
+
 GameWorld::GameWorld()
 {
 	// Create the background for the universe
@@ -18,53 +20,16 @@ GameWorld::GameWorld()
 	mNeptune = make_shared<Neptune>();
 	mPluto = make_shared<Pluto>();
 
-	// Set their sizes
-	mMercury->SetSize(5);
-	mVenus->SetSize(6);
-	mEarth->SetSize(40);
-	mMars->SetSize(10);
-	mJupiter->SetSize(27);
-	mSaturn->SetSize(23);
-	mUranus->SetSize(19);
-	mNeptune->SetSize(18);
-	mPluto->SetSize(3);
-
-	// Set their locations
-	mMercury->SetPosition(100, 0, 0);
-	mVenus->SetPosition(200, 0, 0);
-	mEarth->SetPosition(300, 0, 0);
-	mMars->SetPosition(400, 0, 0);
-	mJupiter->SetPosition(500, 0, 0);
-	mSaturn->SetPosition(600, 0, 0);
-	mUranus->SetPosition(700, 0, 0);
-	mNeptune->SetPosition(800, 0, 0);
-	mPluto->SetPosition(900, 0, 0);
-
-	// Add planets as render-able objects
-	GameEngine::AddRenderableObject(mUniverseBackground);
-	GameEngine::AddRenderableObject(mSun);
-	GameEngine::AddRenderableObject(mMercury);
-	GameEngine::AddRenderableObject(mVenus);
-	GameEngine::AddRenderableObject(mEarth);
-	GameEngine::AddRenderableObject(mMars);
-	GameEngine::AddRenderableObject(mJupiter);
-	GameEngine::AddRenderableObject(mSaturn);
-	GameEngine::AddRenderableObject(mUranus);
-	GameEngine::AddRenderableObject(mNeptune);
-	GameEngine::AddRenderableObject(mPluto);
-
 	// Create orbital lanes
-	mOrbitLane1 = make_shared<OrbitLane>();
-	mOrbitLane2 = make_shared<OrbitLane>();
-	mOrbitLane3 = make_shared<OrbitLane>();
-	mOrbitLane4 = make_shared<OrbitLane>();
-	mOrbitLane5 = make_shared<OrbitLane>();
-	mOrbitLane6 = make_shared<OrbitLane>();
-	mOrbitLane7 = make_shared<OrbitLane>();
-	mOrbitLane8 = make_shared<OrbitLane>();
-	mOrbitLane9 = make_shared<OrbitLane>();
-
-	// Don't forget to add the lanes as render-able objects!
+	mOrbitLane1= make_shared<OrbitLane>(100.0f);
+	mOrbitLane2 = make_shared<OrbitLane>(200.0f);
+	mOrbitLane3 = make_shared<OrbitLane>(300.0f);
+	mOrbitLane4 = make_shared<OrbitLane>(400.0f);
+	mOrbitLane5 = make_shared<OrbitLane>(500.0f);
+	mOrbitLane6 = make_shared<OrbitLane>(600.0f);
+	mOrbitLane7 = make_shared<OrbitLane>(700.0f);
+	mOrbitLane8 = make_shared<OrbitLane>(800.0f);
+	mOrbitLane9 = make_shared<OrbitLane>(900.0f);
 }
 
 GameWorld::~GameWorld()

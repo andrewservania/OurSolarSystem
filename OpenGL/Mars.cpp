@@ -20,6 +20,9 @@ Mars::Mars()
 	mStacks = 10;			//Default: 50 Earth specific
 
 	LoadPlanetImage((mPlanetTextureDefaultFolder += mPlanetTextureFileName).c_str());
+
+	SetSize(10);
+	SetPosition(400, 0, 0);
 }
 
 Mars::~Mars()
